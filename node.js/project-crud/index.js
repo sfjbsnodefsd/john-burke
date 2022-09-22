@@ -54,15 +54,31 @@ app.delete('/deleteemployees/:id',(req,res) =>{
 })
 
 //add employee
-app.post("/addemployee" , (req, res) => {
+app.post('/addemployee',(req,res) =>{
     let emp = req.body;
-    var sql = "SET @EmpID = ?; SET @Name = ?; SET @EmpCode = ?; SET @Salary = ?; \
-    CALL EmployeeAddOrEdit(@EmpID,@Name,@EmpCode,@Salary);";
-    mysqlConnection.query(sql,[emp.EmpID, emp.Name, emp.EmpCode, emp.Salary] , (err,rows,fields) => {
+    var sql = "SET @EmpID = ? ; SET @Name = ?;  SET @EmpCode = ?; SET @Salary = ?; \
+    CALL EmployeeAddOrEdit(@EmpID,@Name,@EmpCode,@Salary);"
+    mysqlConnection.query(sql,[emp.EmpID,emp.Name,emp.EmpCode,emp.Salary],(err,rows,fields) =>{
         if(!err) {
-           res.send(rows)
-        } else console.log(err);
+          rows.forEach(element =>{
+            if(element.constructor == Array)
+            res.send("Employee ID of the inserted employee is : " + element[0].EmpID)
+          })
+        }else console.log(err)
+
     })
 })
 
+//update employee
+app.put('/updateemployee',(req,res) =>{
+    let emp = req.body;
+    var sql = "SET @EmpID = ? ; SET @Name = ?;  SET @EmpCode = ?; SET @Salary = ?; \
+    CALL EmployeeAddOrEdit(@EmpID,@Name,@EmpCode,@Salary);"
+    mysqlConnection.query(sql,[emp.EmpID,emp.Name,emp.EmpCode,emp.Salary],(err,rows,fields) =>{
+        if(!err) {
+           res.send("update success")
+        }else console.log(err)
+
+    })
+})
 
