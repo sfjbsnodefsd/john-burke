@@ -5,12 +5,11 @@ const mongoose = require('mongoose')
 const bodyParser = require("body-parser")
 
 const app = express();
-
 app.use(bodyParser.json());
 app.use(coursesRouter);
 
 
-mongoose.connect("process.env.DB_CONNECTION_URL",() =>{
+mongoose.connect(process.env.DB_CONNECTION_URL,() =>{
     console.log("connected to db sucessfully");
 })
 app.listen(process.env.PORT,() => {

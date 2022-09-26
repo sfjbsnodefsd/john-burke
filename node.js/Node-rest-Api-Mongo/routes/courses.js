@@ -1,5 +1,5 @@
 const ex = require("express");
-const Course = require("../models/courses");
+const Course = require("../models/course");
 const router = ex.Router();
 
 // get all courses
