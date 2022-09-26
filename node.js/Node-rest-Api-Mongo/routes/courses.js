@@ -1,3 +1,4 @@
+const { json } = require("body-parser");
 const ex = require("express");
 const Course = require("../models/course");
 const router = ex.Router();
@@ -22,5 +23,43 @@ router.get("/allcourses", async (req, res) => {
         res.json(err)
     }
  })
+
+ //delete course
+ router.delete("/delete/:courseId", async(req,res) => {
+  try{
+    await Course.remove({_id:req.params.courseId})
+    res.status(200).json({
+      message: "deleted success",
+    })
+  } catch (err) {
+      res.json(err)
+  }
+
+ })
+
+//update course
+
+router.put("/update/:courseId", async(req,res) => {
+  const courseId = req.params.courseId 
+
+  try{
+    const course = await Course.updateOne({_id:courseId}, req.body)
+   res.json(course)
+    
+  } catch (err) {
+      res.json(err)
+  }
+
+ })
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
