@@ -78,21 +78,22 @@ module.exports = {
 
     },
     deleteUser: (req, res) => {
-        const data = req.body
-        deleteUser(data, (err) => {
-            if (err) {
-                console.log(err)
-                return
-            }
-            if (!results) {
-                return res.json({
-                    success: 0,
-                    message: "record not found"
-                })
-            } return res.json({
-                success: 1,
-                message: "User deleted successfully"
-            })
-        })
-    }
-};
+        const data = req.body;
+        deleteUser(data, (err,results) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          if (results.affectedRows == 0) {
+            return res.status(400).json({
+              success: 0,
+              message: "No record found for user id",
+            });
+          }
+          return res.json({
+            sucess: 1,
+            message: "User deleted sucessfully ",
+          });
+        });
+      },
+    };
