@@ -8,8 +8,8 @@ module.exports = {
             `insert into registration(firstName, lastName, gender, email, password, number) 
             values(?,?,?,?,?,?)`,
             [
-                data.first_name,
-                data.last_name,
+                data.firstName,
+                data.lastName,
                 data.gender,
                 data.email,
                 data.password,
@@ -88,4 +88,16 @@ module.exports = {
           }
         );
       },
+      getUserByUserEmail: (email, callBack) => {
+        pool.query(
+          `select * from registration where email = ?`,
+          [email],
+    
+          (error, results, fileds) => {
+            if(error) {
+             return callBack(error)
+            } return callBack(null, results[0]);
+          }
+        )
+      }
     };
