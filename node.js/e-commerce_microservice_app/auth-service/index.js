@@ -45,7 +45,7 @@ app.post("/auth/login", async (req, res) => {
             message: "user doesnt exists"
         })
     } else {
-        if (password !== user.password) {
+        if (password !== user.password) { //incorrect
             return res.json({
                 success: 0,
                 message: "Incorrect Password"
