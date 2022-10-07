@@ -10,4 +10,4 @@ const ProductSchema = new Schema({
     default: Date.now,
   },
 });
-module.exports = User = mongoose.model("product", ProductSchema);
+module.exports = Product = mongoose.model("product", ProductSchema);

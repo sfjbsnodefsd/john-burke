@@ -7,6 +7,8 @@ const amqp = require("amqplib");
 const Product = require("./Product");
 const isAuthenticated = require("../isAuthenticated");
 const { json } = require("express");
+var order
+
 app.use(express.json());
 var channel, connection;
 
@@ -22,7 +24,7 @@ mongoose.connect(
 );
 
 async function connect() {
-  const amqpServer = "amqp://localhost:15672";
+  const amqpServer = "amqp://localhost:5672";
   connection = await amqp.connect(amqpServer);
   channel = await connection.createChannel();
   await channel.assertQueue("PRODUCT");
@@ -39,13 +41,14 @@ app.post("/product/create", isAuthenticated, async (req, res) => {
     description,
     price,
   });
+  newProduct.save()
   return res.json(newProduct);
 });
 
 //user will send a list of the products
 app.post("/product/buy", isAuthenticated, async (req, res) => {
   const {ids} = req.body;
-  const products = await Product.find(_id, { $in: ids });
+  const products = await Product.find({_id: { $in: ids }});
 
   channel.sendToQueue(
     "ORDER",
@@ -56,8 +59,15 @@ app.post("/product/buy", isAuthenticated, async (req, res) => {
       })
     )
   );
+
+  channel.consume("PRODUCT", data => {
+    console.log("consuming product queue");
+     order = JSON.parse(data.content);
+     channel.ack(data)
+  })
+  return res.json(order)
 });
 
-app.listen(PORT, () => {
-  console.log(`product service is running at 5001`);
+app.listen(5001, () => {
+  console.log(`product service is working at port 5001`);
 });
