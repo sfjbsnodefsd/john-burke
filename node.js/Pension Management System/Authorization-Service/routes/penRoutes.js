@@ -1,10 +1,10 @@
 const express = require("express");
-const RegisterPensioner = require("../controller/registerPenController");
-const LoginPensioner = require("../controller/loginController")
+const {RegisterPensioner, getAllpensioner } = require("../controller/registerController");
+const {loginPensioner} = require("../controller/loginTokenController")
 
 const router = express.Router();
 
+router.post("/login", loginPensioner);
+router.get("/getAll", getAllpensioner);
 router.post("/register", RegisterPensioner);
-router.post("/login", LoginPensioner);
-
 module.exports = router;

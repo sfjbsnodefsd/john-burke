@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
+//const jwt = require("jsonwebtoken");
 
 const Router = require("./routes/penRoutes");
 const app = express();
-const PORT = 5000;
+
 
 //middleware
 app.use(express.json());
@@ -24,7 +24,8 @@ mongoose.connect(
     }
   }
 );
-
-app.listen(PORT, () => {
-  console.log(`AUTH SERVICE AT ${PORT}`);
+app.listen(5000, () => {
+  console.log(`AUTH SERVICE AT 5000`);
 });
+
+

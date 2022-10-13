@@ -1,6 +1,14 @@
 const pensionModel = require("../model/login-Model");
 
 
-module.exports = createPensioner = async (PenAuthDB) => {
+const createPensioner = async (PenAuthDB) => {
     return await pensionModel.create(PenAuthDB);
   };
+
+  const getAllPensioner = async () => {
+    return await pensionModel.find().select('-__v'); //hides "version" attribute in mongo
+  };
+
+  module.exports ={
+    createPensioner, getAllPensioner
+  }
