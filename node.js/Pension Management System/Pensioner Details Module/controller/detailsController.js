@@ -1,42 +1,37 @@
 // const filepath = "./person.csv";
 const filepath = "./PersonDetails.csv";
+const PenModel = require("../models/detailsModel");
 const csv = require("csv-parser");
 
 const fs = require("fs");
-const results = [];
+const { exit } = require("process");
+const results = []; //holds csv content
 
 const getPensionerDetails = async (req, res) => {
   fs.createReadStream(filepath)
-    .on("error", () => { res.status(500).json({ error: err.message });})
+    .on("error", () => {
+      res.status(500).json({ error: err.message });
+    })
 
     .pipe(csv())
-    .on("data", (data) => results.push(data)) //get name (data.Name)) 
-    .on("end", () => {
-      res.json(results);
+    .on("data", (data) => results.push(data)) //get name (data.Name))
+    .on("end", (data) => {
+      PenModel.find({}, (err, docs) => {
+        //get db json
+        if (docs.length == 0) {
+          //if json is empty insert csv file into db
+          PenModel.insertMany(results).then(() => {
+            console.log("Data inserted");
+            // Success
+          });
+        } else {
+          console.log("Data already entered");
+          res.status(500).json({ results})
+          
+           // Failure
+        }
+      });
     });
-
 };
-const getPenById = async (req, res) => {
 
-    const resultss = [];
-    fs.createReadStream(filepath)
-    .on("error", () => { res.status(500).json({ error: err.message });})
-
-    .pipe(csv())
-    .on("headers", (data) => resultss.push(data.Name)) //get name (data.Name)) 
-    .on("end", () => {
-      res.json(resultss);
-    });
-
-};
-// exports.getemployeeById = async (req, res) => {
-//   try {
-//     const employee = await getEmployeeById(req.params.id);
-//     res.json({ data: employee, status: "success" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-
-module.exports = { getPensionerDetails,getPenById };
+module.exports = { getPensionerDetails };

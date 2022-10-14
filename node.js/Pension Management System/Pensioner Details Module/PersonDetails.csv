@@ -1,4 +1,4 @@
-Name,Date-of-birth,PAN,SalaryEarned,Allowances,Self-or-Family-pension,Bank_Name,Bank_Acc_No,Public_Private_Bank,aadhaar
+Name,Date_of_birth,PAN,SalaryEarned,Allowances,Self_or_Family_pension,Bank_Name,Bank_Acc_No,Public_Private_Bank,aadhaar
 "Alex Callaghan",1999-12-31,845980,34233,285,Self,AIB,76367177,Private,3208
 "Callum Duffy",2000-08-13,333305,34881,657,Family,BOI,77771708,Public,4091
 "John Graham",1996-04-21,903693,91846,399,Self,TSB,69756830,Private,5751
