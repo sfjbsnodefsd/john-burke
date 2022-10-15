@@ -1,16 +1,19 @@
 const express = require("express");
 const {
-
-  getemployeeById,
-  getAllemployees
-
-} = require("../controller/processController");
+  getAllPensioner,
+  getPensionerAllById,
+  getPensionerAllowanceById,
+  getPensionerSalaryById
+} = require("../controller/findByAadhaarController");
 
 const router = express.Router();
 
+router.get("/:aadhaar", getPensionerAllById);
 
-router.get("/:aadhaar", getemployeeById);
-router.get("/", getAllemployees);
+router.get("/", getAllPensioner);
+router.get("/:aadhaar/allow",getPensionerAllowanceById) 
+router.get("/:aadhaar/sal",getPensionerSalaryById) 
+
 
 
 module.exports = router;

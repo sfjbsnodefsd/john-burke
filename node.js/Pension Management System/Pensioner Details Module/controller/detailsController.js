@@ -4,7 +4,6 @@ const PenModel = require("../models/detailsModel");
 const csv = require("csv-parser");
 
 const fs = require("fs");
-const { exit } = require("process");
 const results = []; //holds csv content
 
 const getPensionerDetails = async (req, res) => {
