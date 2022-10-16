@@ -20,34 +20,6 @@ getPensionerAllDataById = async (req, res) => {
   }
 };
 
-getPensionerSalaryById = async (req, res) => {
-  const salarybefore = await findSalaryEarned(req.params.aadhaar);
-  const Self_Fam = await findSelfOrFamily(req.params.aadhaar);
-  const allowance = await findAllowances(req.params.aadhaar);
-
-  if (Self_Fam == "SELF") {
-    salSelfAmount = salarybefore * 0.8;
-    newAmount = (salSelfAmount + allowance).toFixed(2);
-    //salSelfAmount = (salSelfAmount + allowance)
-    res.json({
-      PensionAmount: { salSelfAmount, newAmount },
-      status: "this is self pension",
-    });
-  } else if (Self_Fam == "FAMILY") {
-    salFamAmount = (salarybefore * 0.5).toFixed(2);
-
-    res.json({
-      PensionAmount: salFamAmount,
-      status: "this is a family pension",
-    });
-  } else {
-    console.log("Invalid Pension Plan");
-    res.json({
-      status: "Error no self or fam pension detected",
-    });
-  }
-};
-
 showPensionAmountandBankAmount = async (aadhaar, res) => {
   try {
     pension = await returnPensionAmount(aadhaar, res);
