@@ -1,16 +1,19 @@
 const ProcessModel = require("../models/processModel");
 
-//.distint returns value from array only without field name
+getAllpensioner = async () => {
+  return await ProcessModel.find({}, { _id: 0 ,__v:0}); //remove id field and version
+};
+
 getpensionerById = async (aadhaar) => {
-  return await ProcessModel.findOne({ aadhaar });
+  return await ProcessModel.findOne({ aadhaar },{ _id: 0 ,__v:0});//remove id field and version
 };
 
 findSalaryEarned = async (aadhaar) => {
-  const salary = await ProcessModel.findOne({ aadhaar }).distinct(
+  const salary = await ProcessModel.findOne({ aadhaar }).distinct(  //.distinct returns value without fieldname in an array
     "SalaryEarned"
   );
 
-  return Number(salary);
+  return Number(salary); //returns salary as a workable number format
 };
 
 findSelfOrFamily = async (aadhaar) => {
@@ -27,9 +30,7 @@ findAllowances = async (aadhaar) => {
   return Number(allowance);
 };
 
-getAllpensioner = async () => {
-  return await ProcessModel.find();
-};
+
 
 getPublicOrPrivateBank = async (aadhaar) => {
   const publicPrivate = await ProcessModel.findOne({ aadhaar }).distinct(

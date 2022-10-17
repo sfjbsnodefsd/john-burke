@@ -1,10 +1,10 @@
 const express = require("express");
-const {getPensionerDetails } = require("../controller/detailsController")
+const {ImportDetailsFromCSV  } = require("../controller/detailsController")
 const router = express.Router();
 
 
-router.get("/getPenDetails", getPensionerDetails );
-//router.get("/getname", getPenById );
+router.get("/getPenDetails", ImportDetailsFromCSV  );
+
 
 
 module.exports = router;

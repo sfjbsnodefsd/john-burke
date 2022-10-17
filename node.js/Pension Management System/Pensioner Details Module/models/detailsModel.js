@@ -8,6 +8,10 @@ const Schema = mongoose.Schema;
 // });
 
 const detailSchema = new Schema({
+  aadhaar: {
+    type: Number,
+    require: true,
+  },
   Name: {
     type: String,
     require: true,
@@ -31,10 +35,7 @@ const detailSchema = new Schema({
     type: String,
     require: true,
   },
-  aadhaar: {
-    type: Number,
-    require: true,
-  },
+
   Bank_Name: { type: String, require: true },
   Bank_Acc_No: { type: Number, require: true },
   Public_Private_Bank: { type: String, require: true },
