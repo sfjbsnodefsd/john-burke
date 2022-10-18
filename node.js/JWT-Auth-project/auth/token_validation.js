@@ -1,4 +1,4 @@
-const { verify, decode } = require("jsonwebtoken");
+const { verify, decoded } = require("jsonwebtoken");
 
 module.exports = {
   checkToken: (req, res, next) => {
