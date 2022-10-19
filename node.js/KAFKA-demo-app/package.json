@@ -1,0 +1,18 @@
+{
+  "name": "kafka-demo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:producer": "node ./producer/index.js",
+    "start:consumer": "node ./consumer/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "audit": "^0.0.6",
+    "avsc": "^5.7.6",
+    "node-rdkafka": "^2.14.0"
+  }
+}
