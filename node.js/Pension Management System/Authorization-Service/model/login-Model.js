@@ -6,6 +6,7 @@ const LoginSchema = new Schema ({
     email:String,
     password:String,
 
+
 })
 
 module.exports = PensionModel = mongoose.model("Login", LoginSchema)

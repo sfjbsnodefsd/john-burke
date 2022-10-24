@@ -2,7 +2,7 @@ const pensionModel = require("../model/login-Model");
 
 
 const createPensioner = async (PenAuthDB) => {
-    return await pensionModel.create(PenAuthDB).select('-__v');
+    return await pensionModel.create(PenAuthDB);
   };
 
   const getAllPensioner = async () => {

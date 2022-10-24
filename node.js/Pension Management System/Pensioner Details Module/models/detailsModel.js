@@ -1,12 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const BankDetailsSchema = new Schema({
-//   Bank_Name: { type: String, require: true },
-//   Bank_Acc_No: { type: Number, require: true },
-//   Public_Private_Bank: { type: String, require: true },
-// });
-
 const detailSchema = new Schema({
   aadhaar: {
     type: Number,
@@ -34,14 +28,12 @@ const detailSchema = new Schema({
   Self_or_Family_pension: {
     type: String,
     require: true,
+    uppercase: true,
   },
 
   Bank_Name: { type: String, require: true },
   Bank_Acc_No: { type: Number, require: true },
-  Public_Private_Bank: { type: String, require: true },
-  // Bankdetails:BankDetailsSchema
-
-  
+  Public_Private_Bank: { type: String, require: true, uppercase: true },
 });
 
 module.exports = PenModel = mongoose.model("PensionerDetail", detailSchema);

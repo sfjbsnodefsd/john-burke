@@ -12,7 +12,7 @@ const RegisterPensioner = async (req, res) => {
   }
 
   const userExists = await PensionModel.findOne({ aadhaar }); //see if aadhaar number is the same
-  if (userExists) {
+  if (!userExists) {
     return res.json({ message: "Pensioner already exists" });
   }
   try {

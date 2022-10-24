@@ -1,43 +1,57 @@
-const ProcessModel = require("../models/processModel");
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));  //import fetch module
 
-getAllpensioner = async () => {
 
-  return await ProcessModel.find({}, { _id: 0 ,__v:0}); //remove id field and version
+///////////////Pensioner Details/////////////////////
+returnPensionDetailsByAadhaar = async (aadhaarNum, res) => {
+  //return using fetch, getting details from pension details
+ 
+    const response = await fetch(`http://localhost:5001/${aadhaarNum}`); //5001 server is fro pensionDetails
+    const data = await response.json();
+    return data
+  
 };
 
-getpensionerById = async (aadhaar) => {
-  return await ProcessModel.findOne({ aadhaar },{ _id: 0 ,__v:0});//remove id field and version
+/////////////PENSION AMOUNT///////////////////////////////
+
+returnPensionAmount = async (aadhaar, res) => {
+
+  const personDetails = await returnPensionDetailsByAadhaar(aadhaar)
+
+  const salarybefore = personDetails.SalaryEarned;
+  const Self_Fam = personDetails.Self_or_Family_pension;
+  const allowance = personDetails.Allowances;
+  
+  if (Self_Fam == "SELF") {
+    salSelfAmount = salarybefore * 0.8;
+    newAmount = (salSelfAmount + allowance).toFixed(2); //toFixed rounds number to 2 decimal places
+    return await newAmount;
+  } else if (Self_Fam == "FAMILY") {
+    salFamAmount = salarybefore * 0.5;
+    newAmount = (salFamAmount + allowance).toFixed(2);
+    return await newAmount;
+  }
+
 };
 
-findSalaryEarned = async (aadhaar,res) => {
-  const salary = await ProcessModel.findOne({ aadhaar }).distinct(  //.distinct returns value without fieldname in an array
-    "SalaryEarned"
-  );
+////////////////BANK SERVICE CHARGE//////////////////////////
 
-  return Number(salary); //returns salary as a workable number format
-};
+returnBankServiceCharge = async (aadhaar, res) => {
+  
+  const publicPrivate = await returnPensionDetailsByAadhaar(aadhaar) //get full details
+  
+  BankType = publicPrivate.Public_Private_Bank
 
-findSelfOrFamily = async (aadhaar) => {
-  const SelfOrFam = await ProcessModel.findOne({ aadhaar }).distinct(
-    "Self_or_Family_pension"
-  );
-  return SelfOrFam.toString().toUpperCase();
-};
+  if (BankType  == "PUBLIC") {
+    return (BankCharge = 500);
+  } else if (BankType  == "PRIVATE") {
+    return (BankCharge = 550);
+  }
 
-findAllowances = async (aadhaar) => {
-  const allowance = await ProcessModel.findOne({ aadhaar }).distinct(
-    "Allowances"
-  ); //gets specfic allwances on aadhaar number
-  return Number(allowance);
 };
 
 
 
-getPublicOrPrivateBank = async (aadhaar) => {
-  const publicPrivate = await ProcessModel.findOne({ aadhaar }).distinct(
-    "Public_Private_Bank"
-  );
-  return publicPrivate.toString().toUpperCase();
-};
+
 
 module.exports = {};
