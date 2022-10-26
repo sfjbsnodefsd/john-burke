@@ -1,11 +1,9 @@
-const e = require("express");
 const {
   returnPensionDetailsByAadhaar,
 } = require("../service/getDBDataService");
-//const {returnBankServiceCharge,returnPensionAmount, returnPensionDetailsByAadhaar} = require("./returnPenBankAmountController.js");
 
 showPensionAmountandBankAmount = async (req, res) => {
-  const person = await returnPensionDetailsByAadhaar(req.params.aadhaar); //check for valid aadhaar
+  const person = await returnPensionDetailsByAadhaar(req.params.aadhaar); //check for valid aadhaar //req cant befoun
   if (person.aadhaar != req.params.aadhaar) {
     console.log(person);
     res.json({ Message: "Wrong AADHAAR number", person });

@@ -14,18 +14,19 @@ const fetch = (...args) =>
 
 /////////////PENSION AMOUNT///////////////////////////////
 
-
-
-returnPensionPercent =  (Self_or_Family_pension) => {
+returnPensionAmount = async (aadhaar, res) => {
+  const personDetails = await returnPensionDetailsByAadhaar(aadhaar)
+  const {SalaryEarned, Allowances, Self_or_Family_pension} = personDetails
 
   if (Self_or_Family_pension == "SELF") {
-    pensionPercent = 0.80
-  } else if (Self_or_Family_pension == "FAMILY") {
-     pensionPercent =  0.50;
-} 
+    return "SELF PENSION: " +  ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
 
- return pensionPercent
-}
+  } else if (Self_or_Family_pension == "FAMILY") {
+    return  "FAMILY PENSION: " + ((SalaryEarned * 0.5)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+  }
+
+};
+
 
 ////////////////BANK SERVICE CHARGE//////////////////////////
 
@@ -46,18 +47,7 @@ returnBankServiceCharge = async (aadhaar, res) => {
 
 
 
-returnPensionAmount = async (aadhaar, res) => {
-  const personDetails = await returnPensionDetailsByAadhaar(aadhaar)
-  const {SalaryEarned, Allowances, Self_or_Family_pension} = personDetails
 
-  if (Self_or_Family_pension == "SELF") {
-    return "SELF PENSION: " +  ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
-
-  } else if (Self_or_Family_pension == "FAMILY") {
-    return  "FAMILY PENSION: " + ((SalaryEarned * 0.5)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
-  }
-
-};
 
 
 module.exports = {returnPensionDetailsByAadhaar };
