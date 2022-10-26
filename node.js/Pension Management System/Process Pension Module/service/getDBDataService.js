@@ -1,51 +1,44 @@
+
+
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));  //import fetch module
 
 
 ///////////////Pensioner Details/////////////////////
-returnPensionDetailsByAadhaar = async (aadhaarNum, res) => {
+ const returnPensionDetailsByAadhaar = async (aadhaarNum) => {
   //return using fetch, getting details from pension details
- 
     const response = await fetch(`http://localhost:5001/${aadhaarNum}`); //5001 server is fro pensionDetails
-    const data = await response.json();
-    return data
-  
+    return await response.json()
+ 
 };
 
 /////////////PENSION AMOUNT///////////////////////////////
 
-returnPensionAmount = async (aadhaar, res) => {
 
-  const personDetails = await returnPensionDetailsByAadhaar(aadhaar)
 
-  const salarybefore = personDetails.SalaryEarned;
-  const Self_Fam = personDetails.Self_or_Family_pension;
-  const allowance = personDetails.Allowances;
-  
-  if (Self_Fam == "SELF") {
-    salSelfAmount = salarybefore * 0.8;
-    newAmount = (salSelfAmount + allowance).toFixed(2); //toFixed rounds number to 2 decimal places
-    return await newAmount;
-  } else if (Self_Fam == "FAMILY") {
-    salFamAmount = salarybefore * 0.5;
-    newAmount = (salFamAmount + allowance).toFixed(2);
-    return await newAmount;
-  }
+returnPensionPercent =  (Self_or_Family_pension) => {
 
-};
+  if (Self_or_Family_pension == "SELF") {
+    pensionPercent = 0.80
+  } else if (Self_or_Family_pension == "FAMILY") {
+     pensionPercent =  0.50;
+} 
+
+ return pensionPercent
+}
 
 ////////////////BANK SERVICE CHARGE//////////////////////////
 
 returnBankServiceCharge = async (aadhaar, res) => {
   
   const publicPrivate = await returnPensionDetailsByAadhaar(aadhaar) //get full details
+  const {Public_Private_Bank} = publicPrivate 
   
-  BankType = publicPrivate.Public_Private_Bank
 
-  if (BankType  == "PUBLIC") {
-    return (BankCharge = 500);
-  } else if (BankType  == "PRIVATE") {
-    return (BankCharge = 550);
+  if (Public_Private_Bank == "PUBLIC") {
+    return "BankCharge =" + 500;
+  } else if (Public_Private_Bank  == "PRIVATE") {
+    return "BankCharge: " + 550;
   }
 
 };
@@ -53,5 +46,22 @@ returnBankServiceCharge = async (aadhaar, res) => {
 
 
 
+returnPensionAmount = async (aadhaar, res) => {
+  const personDetails = await returnPensionDetailsByAadhaar(aadhaar)
+  const {SalaryEarned, Allowances, Self_or_Family_pension} = personDetails
 
-module.exports = {};
+  if (Self_or_Family_pension == "SELF") {
+    return "SELF PENSION: " +  ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+
+  } else if (Self_or_Family_pension == "FAMILY") {
+    return  "FAMILY PENSION: " + ((SalaryEarned * 0.5)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+  }
+
+};
+
+
+module.exports = {returnPensionDetailsByAadhaar };
+
+
+
+

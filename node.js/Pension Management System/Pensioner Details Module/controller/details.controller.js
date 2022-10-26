@@ -1,30 +1,36 @@
-const {} = require("../service/details.service");
+const {
+  findAllDetails,
+  findAllDetailsByAadhaar,
+} = require("../service/details.service");
 
-FindAlldetails = async (req, res) => {
+const FindAlldetails = async (req, res) => {
   //returns all pensioners in db
   try {
     const people = await findAllDetails();
+    if (!people) {
+      return res.status(404).json({ Message: "Database is empty" });
+    }
     res.json({ "Pensioner Details": people });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-FindAlldetailsById = async (req, res) => {
-  //returns 1 pensioner with all his data
-  //get by id (aadhaar number and do calcualaltions)
-  try {
-    const person = await findAllDetailsByAadhaar(req.params.aadhaar);
-    res.json(person);
-  } catch (Error) {
-    res
-      .status(500)
-      .json({
-        error: Error.message,
-      });
-  }
+const findAllDetailsByAadhaarOnly = async (req, res) => {
+  findAllDetailsByAadhaar(req.params.aadhaar)
+    .then((person) => {
+      if (!person) {
+        return res.json({ Failed: "Person = NUll, Wrong AADHAAR" });
+      }
+      res.json(person);
+    })
+    .catch((e) => {
+      console.log(e), res.status(500).json({ error: e.message });
+    });
 };
 
-
-
-module.exports = { FindAlldetails, FindAlldetailsById};
+module.exports = {
+  FindAlldetails,
+  findAllDetailsByAadhaarOnly,
+  findAllDetailsByAadhaar,
+};

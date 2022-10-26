@@ -1,16 +1,13 @@
 const PenModel = require("../models/detailsModel");
 
-findAllDetails = async () => {
+const findAllDetails = async () => {
   return await PenModel.find({}, { _id: 0, __v: 0 }); //remove id field and version
 };
 
-findAllDetailsByAadhaar = async (aadhaar,res) => {
- try{
-  return  await PenModel.findOne({ aadhaar },{ _id: 0, __v: 0 },); //remove id field and version
+ const findAllDetailsByAadhaar = async (aadhaar,res) => {
 
-} catch (RangeError) {
-  console.log(RangeError.message)
+ return await PenModel.findOne({ aadhaar },{ _id: 0, __v: 0 },); //remove id field and version
+
 }
 
-};
-module.exports = {};
+module.exports = {findAllDetails,findAllDetailsByAadhaar};
