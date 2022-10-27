@@ -9,7 +9,7 @@ export class UserFormComponent implements OnInit {
   title = "Fill out the form below"
   name = ""
   age = 0
-  gender = "male"
+  gender = ""
   
 
 
