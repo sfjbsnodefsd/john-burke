@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http'
 const BASE_URL ="http://localhost:5000/user"
 
 @Injectable({
@@ -11,5 +11,13 @@ export class UserService {
     return this.http.post(BASE_URL, user)
   }
 
+
+  getUsers(){
+    return this.http.get(BASE_URL)
+  }
+
+  deleteUser(user){
+    return this.http.delete(BASE_URL + "/" + user.id)
+  }
   constructor(private http:HttpClient) { }
 }
