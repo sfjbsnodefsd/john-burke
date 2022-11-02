@@ -1,6 +1,6 @@
 const express = require("express");
 const {ImportDetailsFromCSV } = require("../controller/ImportCSV.controller")
-const {FindAlldetails,findAllDetailsByAadhaarOnly ,findAllDetailsByAadhaar} = require("../controller/details.controller")
+const {FindAlldetails,findAllDetailsByAadhaarOnly } = require("../controller/details.controller")
 
 const router = express.Router();
 

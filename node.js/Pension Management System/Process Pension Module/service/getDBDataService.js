@@ -6,18 +6,26 @@ const fetch = (...args) =>
 
 ///////////////Pensioner Details/////////////////////
  const returnPensionDetailsByAadhaar = async (aadhaarNum) => {
+
   //return using fetch, getting details from pension details
     const response = await fetch(`http://localhost:5001/${aadhaarNum}`); //5001 server is fro pensionDetails
-    return await response.json()
+    return  await response.json()
+
  
 };
+
+
+
+
+
 
 /////////////PENSION AMOUNT///////////////////////////////
 
 returnPensionAmount = async (aadhaar, res) => {
   const personDetails = await returnPensionDetailsByAadhaar(aadhaar)
+  console.log(personDetails)
   const {SalaryEarned, Allowances, Self_or_Family_pension} = personDetails
-
+  console.log(Allowances)
   if (Self_or_Family_pension == "SELF") {
     return "SELF PENSION: " +  ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
 

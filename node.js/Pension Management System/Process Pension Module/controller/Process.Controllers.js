@@ -7,12 +7,14 @@ showPensionAmountandBankAmount = async (req, res) => {
   if (person.aadhaar != req.params.aadhaar) {
     console.log(person);
     res.json({ Message: "Wrong AADHAAR number", person });
-  }
+  }else
   try {
     pension = await returnPensionAmount(req.params.aadhaar);
+
     bank = await returnBankServiceCharge(req.params.aadhaar);
+  
     {
-      res.json([pension, bank]);
+      await res.json([pension, bank]);
     }
   } catch (err) {
     console.log(err);
@@ -29,7 +31,7 @@ returnPensionDetailsByAadhaarOnly = async (req, res) => {
 
     res.json(personDetails); //return pensioner
   } catch (e) {
-    console.log(e), res.status(500).json({ error: e.message, msg: "heheXd" });
+    console.log(e), res.status(500).json({ error: e.message });
   }
 };
 

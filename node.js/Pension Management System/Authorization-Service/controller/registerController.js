@@ -1,8 +1,8 @@
 const {
   createPensioner,
   getAllPensioner,
-} = require("../service/login-service");
-const PensionModel = require("../model/login-Model");
+} = require("../API/login.service");
+const PensionModel = require("../API/login.model");
 
 const RegisterPensioner = async (req, res) => {
   const { aadhaar, email, password } = req.body;

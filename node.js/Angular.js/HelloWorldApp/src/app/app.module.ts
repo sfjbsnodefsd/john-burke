@@ -7,16 +7,19 @@ import { AppComponent } from './app.component';
 import { UserFormComponent } from './Components/user-form/user-form.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HomeComponent } from './Components/home/home.component';
-import {HttpClientModule} from '@angular/common/http';
-import { RegisteredUsersComponent } from './Components/registered-users/registered-users.component'
-
+import { HttpClientModule } from '@angular/common/http';
+import { RegisteredUsersComponent } from './Components/registered-users/registered-users.component';
+import { PipeDemoComponent } from './Components/pipe-demo/pipe-demo.component';
+import { EllipsisPipe } from './Pipes/ellipsis.pipe'; 
 @NgModule({
   declarations: [
     AppComponent,
     UserFormComponent,
     NavbarComponent,
     HomeComponent,
-    RegisteredUsersComponent
+    RegisteredUsersComponent,
+    PipeDemoComponent,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,
