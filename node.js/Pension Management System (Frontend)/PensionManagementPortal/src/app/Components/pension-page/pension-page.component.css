@@ -1,0 +1,21 @@
+/* table {   
+    counter-reset: rowNumber;
+    }
+    table th {
+     counter-increment: rowNumber;
+    }
+    table tr td:first-child::before {   
+    content: counter(rowNumber);   
+    min-width: 1em;   
+    margin-right: 0.5em;
+    } */
+table {
+   
+    counter-reset: row-num -1
+  }
+  table tr{
+    counter-increment: row-num;
+  }
+  table th:first-child::before {
+      content: counter(row-num) ". ";
+  }

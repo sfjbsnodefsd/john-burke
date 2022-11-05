@@ -1,0 +1,22 @@
+
+    <div class="container-sm  rounded " style="padding: 100px;">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td scope="col">#</td>
+            <th scope="col">Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Bank Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let emp of pensionerService.pensioners">
+            <th scope="row"></th>
+            <td>{{emp.Name}} gerorge</td>
+            <td>{{emp.Date_of_birth}}</td>
+            <td>{{emp.Bank_Name}}</td>
+          </tr>
+   
+        </tbody>
+      </table>
+      </div>

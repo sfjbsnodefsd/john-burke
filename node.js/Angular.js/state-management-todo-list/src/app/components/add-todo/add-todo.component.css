@@ -1,0 +1,53 @@
+.todos {
+    padding: 0%;
+    width : 15em;
+}
+
+.todos li {
+    background-color: aquamarine;
+    color: white;
+    padding: 4px;
+    margin: 5px 20px;
+    border-radius: 4%;
+}
+
+.cross{
+    float: right;
+    background-color: red;
+    padding: 0px 5px 0px 5px;
+    cursor: pointer;
+    color: wheat;
+}
+
+.body{
+    background-color: aquamarine;
+}
+
+.addtodo{
+    background-color: green;
+    color: black;
+    text-align: center;
+    position: center;
+    margin-left: 650px; 
+}
+
+
+.btn{
+    background-color: green;
+    color: black;
+    margin-left: 700px;
+    margin-top: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
