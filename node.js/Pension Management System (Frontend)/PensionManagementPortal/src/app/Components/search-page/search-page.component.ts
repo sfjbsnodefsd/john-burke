@@ -15,11 +15,11 @@ export class SearchPageComponent implements OnInit {
 
   constructor(public searchService: PensionerService) {}
 
-  getPensionerByAADHAAR(id: any){ //works
-    this.searchService.getPensionersByAadhaar(id).subscribe((res) => {
-      this.searchService.pensioners = res as Pensioner[]
-    })
-  }
+  // getPensionerByAADHAAR(id: any){ //works
+  //   this.searchService.getPensionersByAadhaar(id).subscribe((res) => {
+  //     this.searchService.pensioners = res as Pensioner[]
+  //   })
+  // }
 
   //get pension and details
   getPensionANDDETAILS(id: any){

@@ -46,11 +46,12 @@ returnPensionAlongWithPenDetails = async (req, res) => {
   //return both PensionerDETAILS and PENSIONBANKAMOUNT
   try {
     personDetails = await returnPensionDetailsByAadhaar(req.params.aadhaar);
-    pension = await returnPensionAmount(req.params.aadhaar);
-    bank = await returnBankServiceCharge(req.params.aadhaar);
+    pensionAmount = await returnPensionAmount(req.params.aadhaar);
+    console.log(pensionAmount)
+    Bankfee = await returnBankServiceCharge(req.params.aadhaar);
     
      res.json
-    ([personDetails,{pension : pension, bank : bank}]);
+    ([{...personDetails, ...pensionAmount, ...Bankfee}]); //merged into one object for front end
   } catch (err) {
     console.error(err),
       res.status(500).json({ error: err.message, message: "Invalid number" });

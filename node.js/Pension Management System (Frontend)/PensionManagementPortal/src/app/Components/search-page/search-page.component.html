@@ -50,7 +50,16 @@
 
     </tbody>
   </table>
+  <div class="card container-sm" style="width: 80rem;">
+    <div class="card-body" *ngFor= "let pen of searchService.pensioners; let i = index;">
+      <h5 class="card-title">{{pen .Name}}</h5>
+ 
+      <p class="card-text">{{pen. Bankfee}}</p>
+      <p class="card-text">{{pen. pensionAmount}}</p>
 
+      <p class="card-text">check</p>
+    </div>
+  </div>
 
   <table class="table ">
     <thead >
@@ -62,8 +71,8 @@
 
     <tbody>
       <tr *ngFor= "let pen of searchService.pensioners">
-        <td>{{pen. pension}}</td>
-        <td>{{pen. bank}}</td>
+        <td>{{pen. pensionAmount}}</td>
+        <td>{{pen. Bankfee}}</td>
       </tr>
     </tbody>
   

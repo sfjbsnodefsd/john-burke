@@ -14,7 +14,7 @@ const getPENBASE_URL = 'http://localhost:5002';
   providedIn: 'root'
 })
 export class PensionerService {
-   pensioners : Pensioner[] = []
+  pensioners : Pensioner[] = []
   //  pension : CalPension [] =[]
 
   constructor(private http: HttpClient) { }
@@ -23,17 +23,17 @@ export class PensionerService {
     return this.http.get(getAllBASE_URL)   //get body response
     }
 
-    getPensionersByAadhaar(id: any){  //works
-      return this.http.get(`${getIDBASE_URL}/${id}`)
-  }
+  //   getPensionersByAadhaar(id: any){  //works
+  //     return this.http.get(`${getIDBASE_URL}/${id}`)
+  // }
 
   getPension(id: any){    //get pension and details
     return this.http.get(`${getPENBASE_URL}/${id}/bothDetails`)
 }
 
-getPensionOnly(id: any){        //get only both
-  return this.http.get(`${getPENBASE_URL}/${id}/both`)
-}
+// getPensionOnly(id: any){        //get only both
+//   return this.http.get(`${getPENBASE_URL}/${id}/both`)
+// }
 
   
 

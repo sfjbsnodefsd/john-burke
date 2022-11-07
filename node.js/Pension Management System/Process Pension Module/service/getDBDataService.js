@@ -26,10 +26,11 @@ returnPensionAmount = async (aadhaar, res) => {
   const {SalaryEarned, Allowances, Self_or_Family_pension} = personDetails
 
   if (Self_or_Family_pension == "SELF") {
-    return ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
-
+    const pensionAmount = ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+    return ({pensionAmount})
   } else if (Self_or_Family_pension == "FAMILY") {
-    return  ((SalaryEarned * 0.5)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+    const pensionAmount = ((SalaryEarned * 0.5)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+    return ({pensionAmount})
   }
 
 };
@@ -44,9 +45,11 @@ returnBankServiceCharge = async (aadhaar, res) => {
   
 
   if (Public_Private_Bank == "PUBLIC") {
-    return  500;
+    Bankfee =  500;
+    return ({Bankfee})
   } else if (Public_Private_Bank  == "PRIVATE") {
-    return  550;
+    Bankfee = 550;
+    return ({Bankfee})
   }
 
 };
