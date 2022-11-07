@@ -1,29 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import {Pensioner} from 'src/app/Entitiy/pensioner.model'
-import { Subject } from 'rxjs';
+// import { CalPension } from '../Entitiy/pension.model';
 
 
-const BASE_URL = 'http://localhost:5001/findAll';
+
+const getAllBASE_URL = 'http://localhost:5001/findAll';
+const getIDBASE_URL = 'http://localhost:5001';
+const getPENBASE_URL = 'http://localhost:5002'; 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class PensionerService {
    pensioners : Pensioner[] = []
+  //  pension : CalPension [] =[]
 
   constructor(private http: HttpClient) { }
 
   getPensioners() {
-    return this.http.get(BASE_URL)   //get body response
-    // .subscribe((pensionerData) => {
-    //   this.pensioners = pensionerData.pensioner
-    //   this.pensionersUpdated.next([...this.pensioners])
+    return this.http.get(getAllBASE_URL)   //get body response
     }
+
+    getPensionersByAadhaar(id: any){  //works
+      return this.http.get(`${getIDBASE_URL}/${id}`)
   }
 
+  getPension(id: any){    //get pension and details
+    return this.http.get(`${getPENBASE_URL}/${id}/bothDetails`)
+}
 
+getPensionOnly(id: any){        //get only both
+  return this.http.get(`${getPENBASE_URL}/${id}/both`)
+}
 
+  
 
-
-
+  }

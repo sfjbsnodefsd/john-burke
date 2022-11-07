@@ -14,20 +14,15 @@ export class PensionPageComponent implements OnInit {
 
   constructor(public pensionerService: PensionerService) {}
 
-  refreshPensionerList(){
+  getPensionerList(){
     this.pensionerService.getPensioners().subscribe((res) => {
+      console.log(res)
       this.pensionerService.pensioners = res as Pensioner[]
     })
-
   }
  
 
   ngOnInit(): void {
-      //this.pensionerService.getPensioners();
-      this.refreshPensionerList()
-    //   (( pensioner: Pensioner[] = []) => {
-    //     this.pensioner = this.pensioner;
-    //   });
-
+      this.getPensionerList()
   }
 }

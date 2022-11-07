@@ -22,7 +22,7 @@ const findAllDetailsByAadhaarOnly = async (req, res) => {
       if (!person) {
         return res.json({ Failed: "Person = NUll, Wrong AADHAAR" });
       }
-      res.json( person);
+      res.json(person);
     })
     .catch((e) => {
       console.log(e), res.status(500).json({ error: e.message });

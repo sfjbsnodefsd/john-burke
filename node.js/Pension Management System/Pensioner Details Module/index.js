@@ -9,17 +9,7 @@ var cors = require('cors') //enabled cors for ports
 
  
 app.use(cors({origin: 'http://localhost:4200'}))
-//headers for fronend
 
-// app.use (( req, res, next)  => {
-// res.setHeader("Acess-Control-Allow-Origin", "*")
-// res.setHeader("Acess-Control-Allow-header","Origin, X-Requested-With, Content-Type, Accept")
-// res.setHeader("Access-Control-Allow-Methods",
-// "GET, POST, PATCH, DELETE, PUT, OPTIONS")
-// next()
-
-
-// })
 
 
 

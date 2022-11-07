@@ -1,21 +1,28 @@
 const {
   returnPensionDetailsByAadhaar,
 } = require("../service/getDBDataService");
+const PBankModel = require("../models/PensionBank.model");
 
 showPensionAmountandBankAmount = async (req, res) => {
   const person = await returnPensionDetailsByAadhaar(req.params.aadhaar); //check for valid aadhaar //req cant befoun
+
   if (person.aadhaar != req.params.aadhaar) {
-    console.log(person);
+    
     res.json({ Message: "Wrong AADHAAR number", person });
   }else
+
   try {
     pension = await returnPensionAmount(req.params.aadhaar);
-
     bank = await returnBankServiceCharge(req.params.aadhaar);
-  
-    {
-      await res.json([pension, bank]);
-    }
+
+    // var user =  PBankModel({pension :pension,bank: bank})
+    
+    // user.save()
+    
+       res.json([{pension : pension, bank : bank}]);
+      
+
+
   } catch (err) {
     console.log(err);
     res.status(500).json({ errors: err.message });
@@ -41,12 +48,9 @@ returnPensionAlongWithPenDetails = async (req, res) => {
     personDetails = await returnPensionDetailsByAadhaar(req.params.aadhaar);
     pension = await returnPensionAmount(req.params.aadhaar);
     bank = await returnBankServiceCharge(req.params.aadhaar);
-
-    return await res.json({
-      "Pensioner Details": personDetails,
-      "Pension Amount": pension,
-      "Bank Service Charge": bank,
-    });
+    
+     res.json
+    ([personDetails,{pension : pension, bank : bank}]);
   } catch (err) {
     console.error(err),
       res.status(500).json({ error: err.message, message: "Invalid number" });

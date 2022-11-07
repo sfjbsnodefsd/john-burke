@@ -23,14 +23,13 @@ const fetch = (...args) =>
 
 returnPensionAmount = async (aadhaar, res) => {
   const personDetails = await returnPensionDetailsByAadhaar(aadhaar)
-  console.log(personDetails)
   const {SalaryEarned, Allowances, Self_or_Family_pension} = personDetails
-  console.log(Allowances)
+
   if (Self_or_Family_pension == "SELF") {
-    return "SELF PENSION: " +  ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+    return ((SalaryEarned * 0.8)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
 
   } else if (Self_or_Family_pension == "FAMILY") {
-    return  "FAMILY PENSION: " + ((SalaryEarned * 0.5)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
+    return  ((SalaryEarned * 0.5)+Allowances).toFixed(2); //toFixed rounds number to 2 decimal places
   }
 
 };
@@ -45,9 +44,9 @@ returnBankServiceCharge = async (aadhaar, res) => {
   
 
   if (Public_Private_Bank == "PUBLIC") {
-    return "BankCharge =" + 500;
+    return  500;
   } else if (Public_Private_Bank  == "PRIVATE") {
-    return "BankCharge: " + 550;
+    return  550;
   }
 
 };

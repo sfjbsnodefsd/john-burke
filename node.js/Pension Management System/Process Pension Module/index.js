@@ -3,6 +3,15 @@ const mongoose = require("mongoose");
 const Router = require("./routes/process.Routes");
 const app = express();
 
+
+
+const cors = require('cors') //enabled cors for ports
+
+ 
+app.use(cors({origin: 'http://localhost:4200'}))
+
+
+
 app.use(express.json());
 app.use(Router);
 

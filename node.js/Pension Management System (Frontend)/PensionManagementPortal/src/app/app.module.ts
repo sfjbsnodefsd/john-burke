@@ -10,6 +10,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { PensionPageComponent } from './Components/pension-page/pension-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchPageComponent } from './Components/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    PensionPageComponent
+    PensionPageComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,

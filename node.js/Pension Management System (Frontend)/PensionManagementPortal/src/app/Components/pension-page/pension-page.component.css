@@ -10,12 +10,21 @@
     margin-right: 0.5em;
     } */
 table {
-   
-    counter-reset: row-num -1
+    /* background-color: #d8eafc ; */
+    counter-reset: row-num -1;
+
   }
   table tr{
     counter-increment: row-num;
+    
+    
   }
+th{
+  background-color: #81bcf7 ;
+}
   table th:first-child::before {
+   
+      font-style:italic;
       content: counter(row-num) ". ";
   }
+

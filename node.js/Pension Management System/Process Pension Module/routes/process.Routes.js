@@ -9,7 +9,7 @@ const router = express.Router();
 
  router.get("/:aadhaar",returnPensionDetailsByAadhaarOnly)
 router.get("/:aadhaar/bothDetails", returnPensionAlongWithPenDetails)
-router.post("/:aadhaar/both",showPensionAmountandBankAmount)
+router.get("/:aadhaar/both",showPensionAmountandBankAmount)
 
 
 

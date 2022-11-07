@@ -18,4 +18,7 @@ export interface Pensioner {
   Bank_Acc_No: Number;
 
   Public_Private_Bank: String;
+  
+  pension: Number;
+   bank : String;
 }
