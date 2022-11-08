@@ -1,87 +1,99 @@
-<div class="container-sm " style="height:100vh;">
-
-
-
-
-<form class="row g-3 container-sm" style="padding: 40px; ">
+<div class="container-sm" style= "width:60%; min-height:100%;">
+  <form class="row g-3" style="margin-top: 100px">
     <div class="col-auto">
-    <span class="input-group-text " id="basic-addon1">Aadhaar Number</span>
-</div>
+      <span class="input-group-text" id="basic-addon1" style=" color:  #437fc7; font-weight:bold">Aadhaar Number</span>
+    </div>
     <div class="col-auto">
-    <input type="text" class="form-control " placeholder="Enter number"  #AadhaarNum>
-</div>
-        <button type="submit" (click)="getPensionANDDETAILS(AadhaarNum.value)"  class="btn btn-primary mb-3 col-auto">Confirm </button>
-    
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter number"
+        #AadhaarNum
+      />
+    </div>
+    <button
+      type="submit"
+      (click)="getPensionANDDETAILS(AadhaarNum.value)"
+      class="btn btn-primary mb-3 col-auto"
+    >
+      Confirm
+    </button>
   </form>
 
 
 
+  <div class="card " style=" background-color: #d8eafc;  border-radius: 25px;">
+    <div class="card-body"  style="padding: 40px"  *ngFor="let pen of searchService.pensioners">
+      <h4>
+        <strong>Pensioner</strong>
+        {{ pen.Name }}
+      </h4>
 
-  <table class="table table-striped table-bordered ">
-    <thead >
-      <tr>
-        <td scope="col-auto" style="background-color: #81bcf7"> #</td>
-        <th scope="col-auto"> Aadhaar</th>
-        <th scope="col-auto"> Name</th>
-        <th scope="col-auto"> DOB</th>
-        <th scope="col-auto"> PAN</th>
-        <th scope="col-auto"> Salary</th>
-        <th scope="col-auto"> Allowances</th>
-        <th scope="col-auto"> Pension Type</th>
-        <th scope="col-auto"> Bank</th>
-        <th scope="col-auto"> Bank No</th>
-        <th scope="col-auto"> Bank Type</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor= "let pen of searchService.pensioners">
-        <th scope="row"></th>
-        <td>{{pen .aadhaar}} </td>
-        <td>{{pen .Name}}</td>
-        <td>{{pen .Date_of_birth}}</td>
-        <td>{{pen .PAN}}</td>
-        <td>{{pen .SalaryEarned}}</td>
-        <td>{{pen .Allowances}}</td>
-        <td>{{pen .Self_or_Family_pension}}</td>
-        <td>{{pen .Bank_Name}}</td>
-        <td>{{pen .Bank_Acc_No}}</td>
-        <td>{{pen .Public_Private_Bank}}</td>
-      </tr>
+      <table class="table   table-bordered " style="background-color: white; padding: 40px">
+       
+          <tbody>
+        <tr >
+          <th>Aadhaar</th>
+          <td>{{ pen.aadhaar }}</td>
+        </tr>
+        <tr>
+          <th>DOB</th>
+          <td>{{ pen.Date_of_birth }}</td>
+        </tr>
+        <tr>
+          <th>PAN</th>
+          <td>{{ pen.PAN }}</td>
+        </tr>
+        <tr>
+          <th>Salary</th>
+          <td>{{pen.SalaryEarned }}</td>
+        </tr>
+        <tr>
+          <th>Allowances</th>
+          <td>{{ pen.Allowances }}</td>
+        </tr>
+        <tr>
+          <th>Pension Type</th>
+          <td>{{ pen.Self_or_Family_pension }}</td>
+        </tr>
+        <tr>
+          <th>Bank</th>
+          <td>{{ pen.Bank_Name }}</td>
+        </tr>
+        <tr>
+          <th>Bank No</th>
+          <td>{{ pen.Bank_Acc_No }}</td>
+        </tr>
+        <tr>
+          <th>Bank Type</th>
+          <td>{{ pen.Public_Private_Bank }}</td>
+        </tr>
 
-    </tbody>
-  </table>
-  <div class="card container-sm" style="width: 80rem;">
-    <div class="card-body" *ngFor= "let pen of searchService.pensioners; let i = index;">
-      <h5 class="card-title">{{pen .Name}}</h5>
- 
-      <p class="card-text">{{pen. Bankfee}}</p>
-      <p class="card-text">{{pen. pensionAmount}}</p>
-
-      <p class="card-text">check</p>
+     
+      </tbody>
+        
+      </table>
     </div>
   </div>
 
-  <table class="table ">
-    <thead >
+  <!-- 
+
+  /////////////////card//////////////////////////////// -->
+  
+
+  <table class="table" style="margin-top: 50px;">
+    <thead>
       <tr>
-        <th scope="col-auto"> Pension Amount</th>
-        <th scope="col-auto"> BANK FEE</th>
+        <th scope="col-auto">Pension Amount</th>
+        <th scope="col-auto">BANK FEE</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor= "let pen of searchService.pensioners">
-        <td>{{pen. pensionAmount}}</td>
-        <td>{{pen. Bankfee}}</td>
+      <tr *ngFor="let pen of searchService.pensioners">
+        <td>{{ pen.pensionAmount }}</td>
+        <td>{{ pen.Bankfee }}</td>
       </tr>
     </tbody>
-  
   </table>
-
-
-
-
-
-
-
 </div>

@@ -7,7 +7,6 @@ import { SearchPageComponent } from './Components/search-page/search-page.compon
 const routes: Routes = [{path :"", component:HomeComponent},{path :"Pension", component:PensionPageComponent},
 {path :"SearchPage", component:SearchPageComponent}];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

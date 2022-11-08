@@ -11,6 +11,11 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { PensionPageComponent } from './Components/pension-page/pension-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchPageComponent } from './Components/search-page/search-page.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -20,12 +25,15 @@ import { SearchPageComponent } from './Components/search-page/search-page.compon
     FooterComponent,
     PensionPageComponent,
     SearchPageComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

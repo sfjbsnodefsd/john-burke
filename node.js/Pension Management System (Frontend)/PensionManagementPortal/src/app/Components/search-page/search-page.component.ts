@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PensionerService } from 'src/app/Services/pensioner.service';
 import { Pensioner } from 'src/app/Entitiy/pensioner.model';
-// import {CalPension} from 'src/app/Entitiy/pension.model'
+
+
 
 @Component({
   selector: 'app-search-page',
@@ -9,6 +10,7 @@ import { Pensioner } from 'src/app/Entitiy/pensioner.model';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
+
 
 
 

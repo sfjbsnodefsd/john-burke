@@ -1,0 +1,25 @@
+
+
+th, td {
+  padding: 5px;
+  text-align: left;
+ 
+}
+
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th{
+  color:  #437fc7;
+}
+h4 strong {
+  display: block;
+  font-size: 70%;
+  opacity: 0.55;
+  margin-bottom: 10px
+}
+h4{
+  margin-bottom: 20px
+}
