@@ -1,6 +1,6 @@
-<div class="container-sm" style="width: 60%; min-height: 100%">
-  <form class="row g-3" style="margin-top: 100px; margin-bottom: 50px">
-    <div class="col-auto">
+<div class="container-sm globalStyle"   >
+  <form class="row g-3" style="margin-top: 50px; margin-bottom: 50px" >
+    <div class="col-auto" >
       <span
         class="input-group-text"
         id="basic-addon1"
@@ -8,13 +8,18 @@
         >Aadhaar Number</span
       >
     </div>
-    <div class="col-auto">
+    <div class="col-auto" >
       <input
+    
         type="text"
-        class="form-control"
+
         placeholder="Enter number"
         #AadhaarNum
         (input)="getPensionANDDETAILS(AadhaarNum.value)"
+        class="form-control" 
+       
+
+
       />
     </div>
   </form>
@@ -88,8 +93,7 @@
     >
       <table
         class="table table-bordered"
-        style="background-color: white; "
-      >
+        style="background-color: white;">
         <tbody>
           <tr>
             <th scope="col-auto">Pension Amount</th>

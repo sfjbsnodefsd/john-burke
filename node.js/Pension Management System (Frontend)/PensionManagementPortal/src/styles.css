@@ -1,9 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family:  "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif;
+}
 
-container-sm {
-   width:60%;
-    min-height:100%;
-    margin-top: 50px}
+.globalStyle {
+  width: 30%;
+  min-width: fit-content;
+  min-height: 100%;
+}

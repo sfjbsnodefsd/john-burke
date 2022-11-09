@@ -1,27 +1,36 @@
-<div class="row" style ="background-color: #FFFFFF; ">
-  <div class="container-sm  rounded containerStyle">
-    <form style="margin: 80px;">
+<div class="container-sm globalStyle" >
+  <div class="card cardStyle">
+  <form class = "formStyle" (submit)="onLogin(loginForm)" #loginForm="ngForm" >
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input
+          id="exampleInputEmail1"
           type="email"
           class="form-control"
-          id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          name="email"
+          ngModel
+          #emailInput="ngModel"
+          required email
         />
+        <label class="labelStyle"  *ngIf="emailInput.invalid && emailInput.touched"> Please enter a valid password</label>
 
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label" >Password</label>
+      <div >
+        <label   for="exampleInputPassword1" class="form-label">Password</label>
         <input
+          id="exampleInputPassword1"
           type="password"
           class="form-control"
-          id="exampleInputPassword1"
+          name="password"
+          #passwordInput="ngModel"
+          ngModel
+          required
         />
+        <label  class="labelStyle"  *ngIf="passwordInput.invalid && passwordInput.touched"> Please enter a valid password</label>
       </div>
 
-      <button type="submit" class="btn btn-primary">Sign In</button>
+      <button type="submit" class="btn btn-primary" style="margin-top: 20px">Sign In</button>
     </form>
   </div>
 </div>
-
