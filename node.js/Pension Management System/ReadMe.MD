@@ -1,15 +1,15 @@
 # Pension Portal
 
 
-**Authorization Service** 
-ENDPOINTS   
+**Authorization Service--/5000** 
+ENDPOINTS  
 
             POST:/login        //Let members login 
          
             POST:/SignUp      //create a new member
 
 
-**Pension Details Module** 
+**Pension Details Module--/5001** 
 ENDPOINTS 
             
             POST:/importCSV     //import the csv to a mongodb database
@@ -19,7 +19,7 @@ ENDPOINTS
             GET: /:aadhaar        //display by aadhaar number the pensioner Details
 
 
-**Process Pensione Module**          ENDPOINTS  
+**Process Pensione Module/--5002**          ENDPOINTS  
             
             GET:/:aadhaar/Details_Pension        //display Details with PensionAmount/Bank fee
            
