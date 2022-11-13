@@ -1,9 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-//const jwt = require("jsonwebtoken");
 
-const Router = require("./API/user.routes");
+
+const Router = require("./API/login.routes");
 const app = express();
+
+
+var cors = require('cors') //enabled cors for ports
+app.use(cors({origin: 'http://localhost:4200'}))
 
 
 //middleware
@@ -11,7 +15,7 @@ app.use(express.json());
 app.use(Router);
 
 mongoose.connect(
-  "mongodb://localhost:27017/PenAuthDB",
+  "mongodb://127.0.0.1:27017/PenAuthDB",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

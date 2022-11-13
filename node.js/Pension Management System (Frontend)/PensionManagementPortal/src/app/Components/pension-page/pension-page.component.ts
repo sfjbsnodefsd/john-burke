@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Pensioner } from 'src/app/Entitiy/pensioner.model';
+import { Pensioner } from 'src/app/Model/pensioner.model';
 
-import { PensionerService } from 'src/app/Services/pensioner.service';
+import { PensionerService } from 'src/app/Services/PensionerService/pensioner.service';
 
 @Component({
   selector: 'app-pension-page',

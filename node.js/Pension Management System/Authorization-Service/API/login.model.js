@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const validator = require("mongoose-unique-validator")
+const Schema = mongoose.Schema;
 
-const LoginSchema = new mongoose.Schema({
+const loginSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -8,7 +10,13 @@ const LoginSchema = new mongoose.Schema({
     lowercase: true,
     unique: true,
   },
-  password: { type: String, required: true },
+
+  password: { type: String, required: true }
+
 });
 
-module.exports = PensionModel = mongoose.model("Login", LoginSchema);
+
+
+loginSchema.plugin(validator) //for checking duplicates
+
+module.exports = member = mongoose.model("Login", loginSchema);

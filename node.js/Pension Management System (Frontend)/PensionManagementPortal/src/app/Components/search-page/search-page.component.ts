@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PensionerService } from 'src/app/Services/pensioner.service';
-import { Pensioner } from 'src/app/Entitiy/pensioner.model';
+import { PensionerService } from 'src/app/Services/PensionerService/pensioner.service';
+import { Pensioner } from 'src/app/Model/pensioner.model';
 
 
 
@@ -15,21 +15,33 @@ export class SearchPageComponent implements OnInit {
 
 
 
-  constructor(public searchService: PensionerService) {}
+  constructor(public searchService: PensionerService) { }
 
-  // getPensionerByAADHAAR(id: any){ //works
-  //   this.searchService.getPensionersByAadhaar(id).subscribe((res) => {
-  //     this.searchService.pensioners = res as Pensioner[]
-  //   })
-  // }
 
   //get pension and details
-  getPensionANDDETAILS(id: any){
+  getPensionANDDETAILS(id: any) {
     this.searchService.getPension(id).subscribe((res) => {
       console.log("res1" + res)
-      this.searchService.pensioners = res as Pensioner[] 
+      this.searchService.pensioners = res as Pensioner[]
     })
   }
+
+
+
+
+
+
+  ngOnInit(): void {
+
+  }
+}
+
+
+
+
+
+
+
 
 
   // getPensionANDBank(id: any){
@@ -38,12 +50,8 @@ export class SearchPageComponent implements OnInit {
   //     this.searchService.pension = res as CalPension[]
   //   })
   // }
-
-  ngOnInit(): void {
-
-  }
-}
-
-
- 
-   
+  // getPensionerByAADHAAR(id: any){ //works
+  //   this.searchService.getPensionersByAadhaar(id).subscribe((res) => {
+  //     this.searchService.pensioners = res as Pensioner[]
+  //   })
+  // }

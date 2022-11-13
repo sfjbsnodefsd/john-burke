@@ -1,23 +1,45 @@
-<nav class="navbar" style="background-color: #437fc7">
-  <div class="container-sm globalStyle">
-    <a style="color: white; margin: auto" routerLink="" href="#">
-      <h2>Pensioner Portal</h2></a
+<nav class="navbar " style="background-color: #437fc7; color: white">
+  <div class=" container-sm globalStyle">
+    <a routerLink="" href="#">
+      <h2>PENSION PORTAL</h2></a
     >
-  </div>
-</nav>
-<nav class="navbar navbar-light bg-light justify-content-between">
+
+
+
+<ul>
+<li>
   <a
     class="navbar-brand"
-    style="color: #3a2fd4; margin: auto"
     routerLink="Pension"
     href="#"
     >Pension Page</a
-  >
-  <a
+  ></li>
+  <!-- <li>
+  <a  *ngIf = "userIsAuth"
     class="navbar-brand"
-    style="color: #3a2fd4; margin: auto"
     routerLink="SearchPage"
     href="#"
     >Search Page</a
   >
+</li> -->
+  <li>
+  <a
+  *ngIf = "!userIsAuth"
+  class="navbar-brand"
+  routerLink="SignUp"
+  href="#"
+  >SIGN UP</a
+>
+</li>
+  <li *ngIf = "userIsAuth">
+    <button type="button"
+    style="margin-top: 20px;"
+    class="btn btn-light"
+    (click)="onlogout()">
+    LOGOUT</button>
+  </li>
+</ul>
+</div>
+
+
 </nav>

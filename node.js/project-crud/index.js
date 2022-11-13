@@ -6,9 +6,9 @@ const bodyparser = require("body-parser")
 app.use(bodyparser.json())
 
 var mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
+    host: 'database-1-john.ccuk83kbvjoz.ap-northeast-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'root1234',
     database: 'employeedb',
     multipleStatements: true
 })
@@ -24,9 +24,10 @@ app.listen(3000,() => console.log("running express server on port 3000"))
 
 // get all employees
 app.get('/getemployees',(req, res) =>{
-    mysqlConnection.query("select * from Employee", (err, rows, fields) =>{
+    mysqlConnection.query("select * from employee", (err, rows, fields) =>{
         if(!err) {
             console.log(rows)
+            res.json({rows})
 
         }else console.log(err)
     })
@@ -34,7 +35,7 @@ app.get('/getemployees',(req, res) =>{
 
 // get all employees by id
 app.get('/getemployees/:id',(req,res) =>{
-    mysqlConnection.query("select * from Employee where EmpID = ?",[req.params.id],(err,rows,fields) =>{
+    mysqlConnection.query("select * from employee where EmpID = ?",[req.params.id],(err,rows,fields) =>{
         if(!err) {
             res.send(rows)
 
@@ -45,7 +46,7 @@ app.get('/getemployees/:id',(req,res) =>{
 
 //delete employee by id
 app.delete('/deleteemployees/:id',(req,res) =>{
-    mysqlConnection.query("DELETE FROM Employee WHERE EmpID = ?",[req.params.id],(err,rows,fields) =>{
+    mysqlConnection.query("DELETE FROM employee WHERE EmpID = ?",[req.params.id],(err,rows,fields) =>{
         if(!err) {
            res.send("Deleted success")
         }else console.log(err)

@@ -1,27 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Router = require("./routes/details.Routes");
+const Router = require("./API/Pensioner.routes");
 const app = express();
 
 
 
 var cors = require('cors') //enabled cors for ports
-
- 
 app.use(cors({origin: 'http://localhost:4200'}))
-
-
-
-
-
-
 
 
 app.use(express.json());
 app.use(Router);
 
 mongoose
-  .connect("mongodb://localhost:27017/PenAuthDB", {
+  .connect("mongodb://127.0.0.1:27017/PenAuthDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

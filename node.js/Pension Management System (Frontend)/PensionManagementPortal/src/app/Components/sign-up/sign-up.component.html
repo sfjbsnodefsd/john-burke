@@ -1,7 +1,10 @@
 <div class="container-sm globalStyle" >
     <div class="card cardStyle">
-    <form class = "formStyle" (submit)="onLogin(loginForm)" #loginForm="ngForm" >
+      <h2 style="text-align: center; margin-top: 10px;">REGISTER PAGE</h2>
+    <form class = "formStyle" (submit)="onSignUp(SignUpForm)" #SignUpForm="ngForm" >
+      
         <div class="mb-3">
+          
           <label for="exampleInputEmail1" class="form-label">Email address</label>
           <input
             id="exampleInputEmail1"
@@ -30,7 +33,7 @@
           <label  class="labelStyle"  *ngIf="passwordInput.invalid && passwordInput.touched"> Please enter a valid password</label>
         </div>
   
-        <button type="submit" class="btn btn-primary" style="margin-top: 20px">Sign In</button>
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px">Sign Up</button>
       </form>
     </div>
   </div>

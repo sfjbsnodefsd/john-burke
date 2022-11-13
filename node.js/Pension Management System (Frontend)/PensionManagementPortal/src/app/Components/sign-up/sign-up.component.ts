@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { SignupService } from 'src/app/Services/TokenService/signup.token.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(public signupService: SignupService) { }
+
+  onSignUp(form: NgForm){
+    if(form.invalid){
+      return
+    }
+    this.signupService.SignUpMember(form.value.email, form.value.password)
+  }
+
+
+
 
   ngOnInit(): void {
   }

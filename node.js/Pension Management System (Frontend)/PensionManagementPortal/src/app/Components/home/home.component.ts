@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { SignupService } from 'src/app/Services/TokenService/signup.token.service';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,19 @@ import { NgForm } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  onLogin(form: NgForm){
-    console.log(form.value)
+  constructor(public signupService: SignupService) { }
+
+
+  onLogin(form: NgForm) {
+    if (form.invalid) {
+      return
+    }
+    this.signupService.SignInMember(form.value.email, form.value.password)
+
+
   }
 
-  constructor() { }
+
 
   ngOnInit(): void {
   }
