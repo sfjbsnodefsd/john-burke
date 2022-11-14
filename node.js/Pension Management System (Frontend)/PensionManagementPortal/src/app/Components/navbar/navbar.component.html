@@ -6,22 +6,23 @@
 
 
 
-<ul>
+
 <li>
   <a
+  *ngIf = "userIsAuth"
     class="navbar-brand"
     routerLink="Pension"
     href="#"
-    >Pension Page</a
+    >Person List</a
   ></li>
-  <!-- <li>
+  <li>
   <a  *ngIf = "userIsAuth"
     class="navbar-brand"
     routerLink="SearchPage"
     href="#"
-    >Search Page</a
+    >Pension</a
   >
-</li> -->
+</li>
   <li>
   <a
   *ngIf = "!userIsAuth"
@@ -31,18 +32,19 @@
   >SIGN UP</a
 >
 </li>
+<ul  style="margin-top: 20px;" >
 <li>
   <a
   *ngIf = "userIsAuth"
-  class="navbar-brand"
+  class="navbar-brand inline"
   style="color: #ffff00ad;"
   >LOGGEDIN</a
 >
 </li>
   <li *ngIf = "userIsAuth">
     <button type="button"
-    style="margin-top: 20px;"
-    class="btn btn-light"
+    
+    class="btn btn-light inline"
     (click)="onlogout()">
     LOGOUT</button>
   </li>

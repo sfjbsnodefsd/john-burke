@@ -9,7 +9,7 @@ import { AuthGuard } from './Services/Auth/auth-guard.service';
 const routes: Routes = 
 [
   {path :"login", component:HomeComponent},
-  {path :"Pension", component:PensionPageComponent,  },
+  {path :"Pension", component:PensionPageComponent, canActivate:[AuthGuard] },
   {path :"SearchPage", component:SearchPageComponent, canActivate:[AuthGuard] },
   {path: "SignUp", component:SignUpComponent},
   {
