@@ -1,6 +1,10 @@
 ul {
     list-style-type: none;
 }
+
+li{
+    display: inline;
+}
 a{
     color: white;
     display: inline;

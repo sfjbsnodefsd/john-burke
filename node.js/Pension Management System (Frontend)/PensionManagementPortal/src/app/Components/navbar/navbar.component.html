@@ -1,6 +1,6 @@
 <nav class="navbar " style="background-color: #437fc7; color: white">
-  <div class=" container-sm globalStyle">
-    <a routerLink="" href="#">
+  <div class=" container-sm globalStyle" style="width: 800px;">
+    <a routerLink="login" href="#">
       <h2>PENSION PORTAL</h2></a
     >
 
@@ -29,6 +29,14 @@
   routerLink="SignUp"
   href="#"
   >SIGN UP</a
+>
+</li>
+<li>
+  <a
+  *ngIf = "userIsAuth"
+  class="navbar-brand"
+  style="color: #ffff00ad;"
+  >LOGGEDIN</a
 >
 </li>
   <li *ngIf = "userIsAuth">

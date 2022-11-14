@@ -59,12 +59,13 @@ export class SignupService {
       .subscribe(res => {
         const token = res.token
         this.token = token
-        if (token) {
+       if(token){
           //inform other components of authnecation
           this.authStatusListener.next(true)
+          this.isAuthenticated = true;
           //redirect on login
           this.router.navigate(["SearchPage"])
-        }
+       }
       })
   }
 }
