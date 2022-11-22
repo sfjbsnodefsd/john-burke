@@ -22,7 +22,11 @@ const MemberDetails_Pension = async (req, res) => {
     personDetails = await PensionerByID(req.params.aadhaar);
     pensionAmount = await CalculatePension(req.params.aadhaar);
     Bankfee = await CalculateBankFee(req.params.aadhaar);
-    
+
+    if(!pensionAmount){
+      return res.status(404).json([{...personDetails, ...pensionAmount, ...Bankfee}])
+    }
+
      res.json([{...personDetails, ...pensionAmount, ...Bankfee}]); //merged into one object for frontend
 
   } catch (err) {

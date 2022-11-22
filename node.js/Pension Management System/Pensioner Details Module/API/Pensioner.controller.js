@@ -29,11 +29,23 @@ const PensionerList= async (req, res) => {
   }
 };
 
+const updatePensioner= async (req, res) => { //works
+  try {
+    const aadhar = req.params.aadhaar
+    const pensionerResponse = req.body;
 
+   const PensionerUpdated = await Pensioner.findOneAndUpdate({aadhaar: aadhar},pensionerResponse);
+    //await PensionerUpdated.save();
+
+    res.json({ data: PensionerUpdated , status: "success" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 
 module.exports = {
   PensionerList,
-  PensionerByID
-
+  PensionerByID,
+  updatePensioner
 };

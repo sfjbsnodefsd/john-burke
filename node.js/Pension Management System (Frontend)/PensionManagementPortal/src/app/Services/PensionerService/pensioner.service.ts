@@ -25,8 +25,17 @@ export class PensionerService {
 
 
   getPension(id: any) {    //get pension and details
-    return this.http.get(`${ProcessURL}/${id}/Details_Pension`)
+   
+    return this.http.get(`${ProcessURL}/${id}/Details_Pension`,{observe: 'response'}) 
   }
 
+  updatePensioner(id: any, pensioner:  Pensioner) {
+    return this.http.put(`${DetailsURL}/${id}/update`, pensioner );
+  }
+
+  getCurrentData(id){
+    return this.http.get(`${DetailsURL}/${id}`) 
+
+  }
 
 }

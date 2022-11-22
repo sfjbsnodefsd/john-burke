@@ -6,7 +6,6 @@ import {
 import { Injectable } from '@angular/core';
 import { SignupService } from 'src/app/Services/TokenService/signup.token.service';
 import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Injectable()
 

@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SearchPageComponent } from './Components/search-page/search-page.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { AuthInterceptor } from './Services/Auth/auth-interceptor';
+import { EditPensionerComponent } from './Components/edit-pensioner/edit-pensioner.component';
 
 
 
@@ -26,7 +27,8 @@ import { AuthInterceptor } from './Services/Auth/auth-interceptor';
     FooterComponent,
     PensionPageComponent,
     SearchPageComponent,
-    SignUpComponent
+    SignUpComponent,
+    EditPensionerComponent
     
   ],
   imports: [

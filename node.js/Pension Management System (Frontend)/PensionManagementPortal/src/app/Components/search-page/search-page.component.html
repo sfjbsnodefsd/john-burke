@@ -20,14 +20,26 @@
       <button
         type="button"
         class="btn btn-outline-primary"
-        (click)="getPensionANDDETAILS(AadhaarNum.value)"
+        (click)="getPensionANDDETAILS(3208)"
       >
         SEARCH
       </button>
     </div>
   </form>
 
-  <body *ngIf="AadhaarNum.value">
+  
+<!-- /////////////////ERROR STATUS////////////////////////////////// -->
+  <!-- cant find aadhaar filter by status code -->
+    <div class="card border-danger "*ngIf="(cantfindID==404)">
+      <div class="card-body text-danger">
+        <h5 class="card-title">Not Found...</h5>
+        <p class="card-text">Enter valid Aadhaar ID</p>
+      </div>
+    </div>
+<!-- ////////////////////////////////////////////////////////////// -->
+
+
+  <body *ngIf="(cantfindID==200)"> 
     <div class="card" style="background-color: #d8eafc; border-radius: 25px">
       <div
         class="card-body"
@@ -82,6 +94,19 @@
             </tr>
           </tbody>
         </table>
+
+        <div class="col-auto">
+          <button
+            type="button"
+            style="margin-top: 10px; background-color: pink; float: right;"
+            class="btn btn-outline-primary"
+             routerLink="/Edit/{{ pen.aadhaar }}"
+  
+          >
+            EDIT
+          </button>
+        </div>
+
       </div>
     </div>
 
@@ -114,3 +139,4 @@
     </div>
   </body>
 </div>
+
