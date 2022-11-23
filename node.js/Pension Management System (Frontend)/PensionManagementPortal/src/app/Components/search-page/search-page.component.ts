@@ -11,9 +11,6 @@ import { Pensioner } from 'src/app/Model/pensioner.model';
 export class SearchPageComponent implements OnInit {
 
 
-
-
-
   constructor(public searchService: PensionerService) { }
 
   cantfindID = null
@@ -31,25 +28,6 @@ export class SearchPageComponent implements OnInit {
     })
     
   }
-
-
-  // editEmployee(pensioner: Pensioner) {
-  //   this.searchService.updatePensioner(this.pensioner.value, pensioner.body)
-  //     .subscribe({
-  //       next: () => {
-  //         this.router.navigate(['/employees']);
-  //       },
-  //       error: (error) => {
-  //         alert('Failed to update employee');
-  //         console.error(error);
-  //       }
-  //     })
-  // }
-
-
-
-
-
 
   ngOnInit(): void {
 

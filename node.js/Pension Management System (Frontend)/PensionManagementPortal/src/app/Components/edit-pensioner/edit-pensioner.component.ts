@@ -10,41 +10,20 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './edit-pensioner.component.html',
   styleUrls: ['./edit-pensioner.component.css']
 })
-export class EditPensionerComponent implements OnInit {
-
-    editPensioner = new  FormGroup ({
-      
-     
-      DOB : new FormControl(""),
-      PAN : new FormControl(""),
-      Salary : new FormControl(""),
-      Allowances : new FormControl(""),
-      PensionType : new FormControl(""),
-      Bank : new FormControl(""),
-      BankNo : new FormControl(""),
-      BankType: new FormControl("")
-
-    })
-
-
-
+export class EditPensionerComponent implements OnInit {s
 
 
   constructor(public editService: PensionerService, private router:ActivatedRoute) { }
 
+  updatedtrue= false
 
-  getPensionANDDETAILS(id: any) {
-   
-      this.editService.getPension(id).subscribe((res) => {
-        
-      this.editService.pensioners = res.body as Pensioner[]
-    
-    })
-  }
   onEdit(form: NgForm) {
    
-    this.editService.updatePensioner(this.router.snapshot.params['id'], form.value).subscribe((res)=>{
-      console.log(res)
+    this.editService.updatePensioner(this.router.snapshot.params['id'], form.value,)
+    .subscribe((res)=>{
+      this.updatedtrue = true
+ 
+
     })
      
 
@@ -53,7 +32,7 @@ export class EditPensionerComponent implements OnInit {
 
   
   ngOnInit(): void {
-   // this.getPensionANDDETAILS(this.router.snapshot.params['id'])
+  
 
   }
 

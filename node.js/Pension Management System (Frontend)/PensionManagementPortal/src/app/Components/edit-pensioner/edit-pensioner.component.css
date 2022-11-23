@@ -25,3 +25,21 @@ th, td {
   h4{
     margin-bottom: 20px
   }
+
+
+
+  #hideMe {
+    animation: cssAnimation 3s 0s forwards;
+    opacity: 100; 
+  }
+ 
+.fade-in-text {
+
+  animation: fadeIn 10s;
+}
+  
+ 
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
