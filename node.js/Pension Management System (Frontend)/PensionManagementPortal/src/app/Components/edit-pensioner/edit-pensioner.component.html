@@ -4,9 +4,6 @@
       class="card"
       style="background-color: #d8eafc; border-radius: 25px; margin-top: 20px"
     >
-    
-
-
       <div
         class="card-body"
         style="padding: 40px"
@@ -16,7 +13,7 @@
           <strong>Pensioner</strong>
           {{ pen.Name }}
         </h4>
-        <form class = "formStyle" (submit)="onEdit(editForm)" #editForm="ngForm">
+        <form class="formStyle" (submit)="onEdit(editForm)" #editForm="ngForm">
           <table
             class="table table-bordered"
             style="background-color: white; padding: 40px"
@@ -30,7 +27,7 @@
                   <input
                     type="date"
                     id="DOB"
-                    name="Date_of_birth"              
+                    name="Date_of_birth"
                     [(ngModel)]="pen.Date_of_birth"
                   />
                 </td>
@@ -43,7 +40,7 @@
                   <input
                     type="text"
                     id="PAN"
-                    name="PAN"     
+                    name="PAN"
                     maxlength="6"
                     minlength="6"
                     [(ngModel)]="pen.PAN"
@@ -57,12 +54,10 @@
                 <td>
                   <input
                     type="number"
-                   
                     name="SalaryEarned"
                     maxlength="5"
                     minlength="5"
                     [(ngModel)]="pen.SalaryEarned"
-                    
                   />
                 </td>
               </tr>
@@ -86,10 +81,12 @@
                   <label for="Pension Type">Pension Type</label>
                 </th>
                 <td>
-                  <select class="form-control" 
-                  id="Pension Type"
-                  name="Self_or_Family_pension"
-                  [(ngModel)]="pen.Self_or_Family_pension ">
+                  <select
+                    class="form-control"
+                    id="Pension Type"
+                    name="Self_or_Family_pension"
+                    [(ngModel)]="pen.Self_or_Family_pension"
+                  >
                     <!-- <option>{{ pen.Self_or_Family_pension }}</option> -->
                     <option>FAMILY</option>
                     <option>SELF</option>
@@ -102,10 +99,12 @@
                   <label for="Bank">Bank Name</label>
                 </th>
                 <td>
-                  <select class="form-control" 
-                  id="Bank"
-                  name="Bank_Name"
-                  [(ngModel)]=" pen.Bank_Name ">
+                  <select
+                    class="form-control"
+                    id="Bank"
+                    name="Bank_Name"
+                    [(ngModel)]="pen.Bank_Name"
+                  >
                     <option>AIB</option>
                     <option>BOI</option>
                     <option>TSB</option>
@@ -121,11 +120,9 @@
                     type="number"
                     id="Bank No"
                     name="Bank_Acc_No"
-                  
                     maxlength="8"
                     minlength="8"
                     [(ngModel)]="pen.Bank_Acc_No"
-                    
                   />
                 </td>
               </tr>
@@ -134,10 +131,12 @@
                   <label for="Bank Type">Bank Type</label>
                 </th>
                 <td>
-                  <select class="form-control"
-                  id="Bank Type"
-                  name="Public_Private_Bank"
-                  [(ngModel)]="pen.Public_Private_Bank">
+                  <select
+                    class="form-control"
+                    id="Bank Type"
+                    name="Public_Private_Bank"
+                    [(ngModel)]="pen.Public_Private_Bank"
+                  >
                     <option>PUBLIC</option>
                     <option>PRIVATE</option>
                   </select>
@@ -149,37 +148,48 @@
             <button
               type="submit"
               style="margin-top: 10px; background-color: pink; float: right"
-              class="btn btn-outline-primary"  
-              (click)="FadeOut()"       
-              >
+              class="btn btn-outline-primary"
+              (click)="FadeOut()"
+            >
               Update
             </button>
+
+            <button
+            type="button"
+            style="margin-top: 10px; background-color: pink; float: left"
+            class="btn btn-outline-primary"
+            routerLink="/SearchPage"> Back
+          </button>
+            
           </div>
         </form>
-
       </div>
     </div>
-        <!-- /////////////////Updated success header////////////////////////// -->
+    <!-- /////////////////Updated success header////////////////////////// -->
 
-        <div class="card border-primary mb-3 "
-        
-        [ngClass] ="FadeOutEffect" 
-  
-        *ngIf = "updatedtrue"
-        style="margin-top: 10px">
-          <div class="card-body text-primary">
-            <h5 class="card-title" style="text-align: center;">
-             UPDATED!</h5>
-          </div>
-        </div>
-  <!-- ////////////////////////////////////////////////////////////// -->
+    <div
+      class="card border-primary mb-3"
+      [ngClass]="FadeOutEffect"
+      *ngIf="statusCode == 200 "
+      style="margin-top: 10px"
+    >
+      <div class="card-body text-primary">
+        <h5 class="card-title" style="text-align: center">UPDATED!</h5>
+      </div>
+    </div>
+    <!-- /////////////////NO CHANGES MADE HEADER////////////////////////////////// -->
+    <div
+      class="card border-danger mb-3"
+      [ngClass]="FadeOutEffect"
+      *ngIf="statusCode == 400 "
+      style="margin-top: 10px"
+    >
+      <div class="card-body text-danger">
+        <h5 class="card-title" style="text-align: center">NOT UPDATED!</h5>
+        <p class="card-title" style="text-align: center">No changes made.</p>
+      </div>
+    </div>
 
-
-
-
-
-
-       
-    <!-- /////////////////Pension//////////////////////////////// -->
+    <!-- ///////////////////////////////////////////////// -->
   </body>
 </div>

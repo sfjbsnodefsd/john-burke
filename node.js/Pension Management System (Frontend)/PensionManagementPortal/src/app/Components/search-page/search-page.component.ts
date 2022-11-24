@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PensionerService } from 'src/app/Services/PensionerService/pensioner.service';
 import { Pensioner } from 'src/app/Model/pensioner.model';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search-page',
@@ -9,9 +9,10 @@ import { Pensioner } from 'src/app/Model/pensioner.model';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
+ 
 
 
-  constructor(public searchService: PensionerService) { }
+  constructor(public searchService: PensionerService, private router: ActivatedRoute) { }
 
   cantfindID = null
 
@@ -30,6 +31,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
 
   }
 }

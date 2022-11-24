@@ -30,7 +30,7 @@ export class PensionerService {
   }
 
   updatePensioner(id: any, pensioner:  Pensioner) {
-    return this.http.put(`${DetailsURL}/${id}/update`, pensioner );
+    return this.http.put(`${DetailsURL}/${id}/update`, pensioner,{observe: 'response'} );
   }
 
   getCurrentData(id){

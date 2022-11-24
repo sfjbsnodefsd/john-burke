@@ -29,7 +29,7 @@ th, td {
 
 .fade-out-text{
 
-  animation: fadeOut 2s forwards;
+  animation: fadeOut 5s forwards;
 } 
 @keyframes fadeOut {
   0% { opacity: 1; }
