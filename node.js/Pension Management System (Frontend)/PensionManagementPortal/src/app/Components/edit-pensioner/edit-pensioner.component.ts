@@ -14,6 +14,16 @@ export class EditPensionerComponent implements OnInit {s
 
 
   constructor(public editService: PensionerService, private router:ActivatedRoute) { }
+  FadeOutEffect = '';
+
+  FadeOut() {
+    this.FadeOutEffect = '';
+    setTimeout(() => {
+      this.FadeOutEffect = 'fade-out-text';
+    }, 0);
+  }
+
+
 
   updatedtrue= false
 
@@ -21,12 +31,11 @@ export class EditPensionerComponent implements OnInit {s
    
     this.editService.updatePensioner(this.router.snapshot.params['id'], form.value,)
     .subscribe((res)=>{
+      console.log(res)
       this.updatedtrue = true
- 
-
     })
      
-
+   
 
   }
 

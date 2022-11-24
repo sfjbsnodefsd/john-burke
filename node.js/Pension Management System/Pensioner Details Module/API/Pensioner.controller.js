@@ -34,12 +34,25 @@ const updatePensioner= async (req, res) => { //works
     const aadhar = req.params.aadhaar
     const pensionerResponse = req.body;
 
-   const PensionerUpdated = await Pensioner.findOneAndUpdate({aadhaar: aadhar},pensionerResponse);
-    //await PensionerUpdated.save();
+   const PensionerUpdated = await Pensioner.findOneAndUpdate({aadhaar: aadhar},pensionerResponse, {returnOriginal:false})
+  // Pensioner.update({aadhaar: aadhar},pensionerResponse,{returnOriginal:false},(err,doc)=>{
+  //   console.log("err",err)
+  //   console.log("response",)
+  //   if(!err){
+
+  //     console.log("Managed to update")
+  //     console.log("this is inside" , doc)
+  //   return  res.json({ status: "success" });
+  //   }
+  //   return res.json({  status: `fail => ${err}`});
+
+  //  })
+
+  
 
     res.json({ data: PensionerUpdated , status: "success" });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message, message: "error" });
   }
 };
 

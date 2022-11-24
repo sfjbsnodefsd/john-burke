@@ -18,6 +18,7 @@ ENDPOINTS
            
             GET: /:aadhaar        //display by aadhaar number the pensioner Details
 
+            PUT: /:aadhaar/update   //update pensioner details
 
 **Process Pensione Module/--5002**          ENDPOINTS  
             
