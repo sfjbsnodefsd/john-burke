@@ -9,20 +9,24 @@ import { PensionerService } from 'src/app/Services/PensionerService/pensioner.se
   styleUrls: ['./pension-page.component.css'],
 })
 export class PensionPageComponent implements OnInit {
- 
- 
-
   constructor(public pensionerService: PensionerService) {}
 
-  getPensionerList(){
+  getPensionerList() {
     this.pensionerService.getPensioners().subscribe((res) => {
-      console.log(res)
-      this.pensionerService.pensioners = res as Pensioner[]
-    })
+      this.pensionerService.pensioners = res as Pensioner[];
+    });
   }
- 
+
+  ImportCSVData() {
+    this.pensionerService.ImportCSVData().subscribe((res) => {});
+  }
 
   ngOnInit(): void {
-      this.getPensionerList()
+    if (this.pensionerService.pensioners.length == 0) {
+      this.ImportCSVData();
+    }
+    this.getPensionerList();
+    
+
   }
 }

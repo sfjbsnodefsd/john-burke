@@ -20,7 +20,7 @@
       <button
         type="button"
         class="btn btn-outline-primary"
-        (click)="getPensionANDDETAILS(3208)"
+        (click)="getPensionANDDETAILS(AadhaarNum.value)"
       >
         SEARCH
       </button>
@@ -39,11 +39,11 @@
 <!-- ////////////////////////////////////////////////////////////// -->
 
 
-  <body *ngIf="(cantfindID==200)"> 
-    <div class="card" style="background-color: #d8eafc; border-radius: 25px">
+  <body *ngIf="(searchService.pensioners.length == 1)"> 
+    <div class="card " >
       <div
         class="card-body"
-        style="padding: 40px"
+        style="padding: 60px"
         *ngFor="let pen of searchService.pensioners"
       >
         <h4>
@@ -85,7 +85,7 @@
               <td>{{ pen.Bank_Name }}</td>
             </tr>
             <tr>
-              <th>Bank No</th>
+              <th>Bank Number</th>
               <td>{{ pen.Bank_Acc_No }}</td>
             </tr>
             <tr>
@@ -116,11 +116,12 @@
 
     <div
       class="card"
-      style="background-color: #d8eafc; border-radius: 25px; margin-top: 40px"
+      style="margin-top: 40px;
+      margin-bottom: 40px"
     >
       <div
         class="card-body"
-        style="padding: 40px"
+        style="padding: 40px;"
         *ngFor="let pen of searchService.pensioners"
       >
         <table class="table table-bordered" style="background-color: white">

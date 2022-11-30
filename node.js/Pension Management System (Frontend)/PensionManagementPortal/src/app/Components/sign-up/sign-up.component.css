@@ -5,18 +5,13 @@
     background-color: #d8eafc;
 
 }
+.cardStyle{
 
-.p2 {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  margin-top: 40px; 
+  min-width: fit-content;
+ }
 
 
-  .cardStyle{
-    background-color: #98f0f850; 
-    border-radius: 25px;
-    margin-top: 40px; 
-    min-width: fit-content;
-   }
 
 .formStyle{
   margin: 80px; 

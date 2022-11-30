@@ -7,10 +7,24 @@ body {
 body {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif;
+
+  background-image: url("assets/PinkBG.jpg");
+}
+/* //linear-gradient(to bottom, transparent, #3b8aeb90), */
+.card{
+  background-color: rgb(255, 255, 255);
+ 
+}
+nav,
+footer {
+  background-image: url("assets/wepik-photo-mode-20221030-154211.png");
+  background-color: transparent;
 }
 
+
 .globalStyle {
-  width: 30%;
+  width: 40%;
   min-width: fit-content;
+
   min-height: 100%;
 }

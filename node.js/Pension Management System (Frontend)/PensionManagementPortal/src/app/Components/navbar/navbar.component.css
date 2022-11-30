@@ -10,3 +10,7 @@ a{
 .inline{
     display: inline;
 }
+
+nav{
+    min-height: 10%;
+}

@@ -9,7 +9,7 @@ const ImportDetailsFromCSV = async (req, res) => {
       PenModel.find({}, (err, DBcontent) => { 
         if (DBcontent.length == 0) {
           //if json is empty insert csv file into db
-          console.log("Data inserted");
+         
           return PenModel.insertMany(csvData).then(() => {
             res.json({
               message: "Data inserted ",
@@ -17,7 +17,7 @@ const ImportDetailsFromCSV = async (req, res) => {
             });
           });
         } else {
-          console.log("Data already entered");
+          
           return res
             .status(500)
             .json({ message: "Data already inserted", csvData });

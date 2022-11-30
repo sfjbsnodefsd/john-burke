@@ -23,7 +23,7 @@ export class PensionerService {
   }
 
 
-
+  
   getPension(id: any) {    //get pension and details
    
     return this.http.get(`${ProcessURL}/${id}/Details_Pension`,{observe: 'response'}) 
@@ -33,9 +33,11 @@ export class PensionerService {
     return this.http.put(`${DetailsURL}/${id}/update`, pensioner,{observe: 'response'} );
   }
 
-  getCurrentData(id){
-    return this.http.get(`${DetailsURL}/${id}`) 
-
+  ImportCSVData() {
+    return this.http.post(`${DetailsURL}/importCSV`,{observe: 'response'})   
   }
+
+
+  
 
 }

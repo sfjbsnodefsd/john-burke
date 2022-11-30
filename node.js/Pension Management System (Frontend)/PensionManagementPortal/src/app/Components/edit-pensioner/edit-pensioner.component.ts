@@ -26,6 +26,7 @@ export class EditPensionerComponent implements OnInit {
         console.log(res);
         this.statusCode = res.status
        
+       
       },
       (error) => {
          this.statusCode = error.status // displaying no aadhaar found by status code

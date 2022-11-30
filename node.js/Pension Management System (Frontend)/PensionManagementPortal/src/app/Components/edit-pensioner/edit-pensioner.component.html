@@ -2,11 +2,11 @@
   <body>
     <div
       class="card"
-      style="background-color: #d8eafc; border-radius: 25px; margin-top: 20px"
+      style="margin-top: 40px"
     >
       <div
         class="card-body"
-        style="padding: 40px"
+        style="padding: 60px;"
         *ngFor="let pen of editService.pensioners"
       >
         <h4>
@@ -21,12 +21,11 @@
             <tbody>
               <tr>
                 <th>
-                  <label for="DOB">DOB</label>
+                  <label>DOB</label>
                 </th>
                 <td>
                   <input
                     type="date"
-                    id="DOB"
                     name="Date_of_birth"
                     [(ngModel)]="pen.Date_of_birth"
                   />
@@ -34,12 +33,11 @@
               </tr>
               <tr>
                 <th>
-                  <label for="PAN">PAN</label>
+                  <label>PAN</label>
                 </th>
                 <td>
                   <input
                     type="text"
-                    id="PAN"
                     name="PAN"
                     maxlength="6"
                     minlength="6"
@@ -49,7 +47,7 @@
               </tr>
               <tr>
                 <th>
-                  <label for="Salary">Salary</label>
+                  <label>Salary</label>
                 </th>
                 <td>
                   <input
@@ -63,12 +61,11 @@
               </tr>
               <tr>
                 <th>
-                  <label for="Allowances">Allowances</label>
+                  <label>Allowances</label>
                 </th>
                 <td>
                   <input
                     type="number"
-                    id="Allowances"
                     name="Allowances"
                     maxlength="3"
                     minlength="3"
@@ -78,12 +75,11 @@
               </tr>
               <tr>
                 <th>
-                  <label for="Pension Type">Pension Type</label>
+                  <label>Pension Type</label>
                 </th>
                 <td>
                   <select
                     class="form-control"
-                    id="Pension Type"
                     name="Self_or_Family_pension"
                     [(ngModel)]="pen.Self_or_Family_pension"
                   >
@@ -96,12 +92,11 @@
 
               <tr>
                 <th>
-                  <label for="Bank">Bank Name</label>
+                  <label>Bank Name</label>
                 </th>
                 <td>
                   <select
                     class="form-control"
-                    id="Bank"
                     name="Bank_Name"
                     [(ngModel)]="pen.Bank_Name"
                   >
@@ -113,12 +108,11 @@
               </tr>
               <tr>
                 <th>
-                  <label for="Bank No">Bank No</label>
+                  <label>Bank Number</label>
                 </th>
                 <td>
                   <input
                     type="number"
-                    id="Bank No"
                     name="Bank_Acc_No"
                     maxlength="8"
                     minlength="8"
@@ -128,12 +122,11 @@
               </tr>
               <tr>
                 <th>
-                  <label for="Bank Type">Bank Type</label>
+                  <label>Bank Type</label>
                 </th>
                 <td>
                   <select
                     class="form-control"
-                    id="Bank Type"
                     name="Public_Private_Bank"
                     [(ngModel)]="pen.Public_Private_Bank"
                   >

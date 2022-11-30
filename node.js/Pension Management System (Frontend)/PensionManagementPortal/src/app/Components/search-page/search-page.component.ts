@@ -6,32 +6,38 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.css']
+  styleUrls: ['./search-page.component.css'],
 })
 export class SearchPageComponent implements OnInit {
- 
-
-
-  constructor(public searchService: PensionerService, private router: ActivatedRoute) { }
-
-  cantfindID = null
+  constructor(
+    public searchService: PensionerService,
+    private router: ActivatedRoute
+  ) {}
+  idResult= localStorage.getItem("id")
+  cantfindID = null;
 
   //get pension and details
   getPensionANDDETAILS(id: any) {
-    this.searchService.getPension(id).subscribe((res) => {
-      this.cantfindID =res.status
-      this.searchService.pensioners = res.body as Pensioner[]
-    
-    },
-    (error) => {
-       this.cantfindID = error.status // displaying no aadhaar found by status code
-       // get the status as error.status
-    })
-    
+    this.searchService.getPension(id).subscribe(
+      (res) => {
+        this.cantfindID = res.status;
+        this.searchService.pensioners = res.body as Pensioner[];
+       this.idResult = id
+      
+      },
+      (error) => {
+        this.cantfindID = error.status; // displaying no aadhaar found by status code
+        // get the status as error.status
+      }
+    );
   }
 
   ngOnInit(): void {
     
+    //get updated content on back button from edit 
+    this.getPensionANDDETAILS(this.idResult) 
 
   }
+
+
 }
