@@ -1,4 +1,6 @@
 const { PensionerByID, CalculatePension, CalculateBankFee } = require("./Process.service");
+const database = require("./Process.model")
+
 
 ///////Only Pension + Bank fee//////////////////
 const PensionAmount = async (req, res) => {
@@ -27,10 +29,14 @@ const MemberDetails_Pension = async (req, res) => {
       return res.status(404).json([{...personDetails, ...pensionAmount, ...Bankfee}])
     }
 
+    var user = database({...personDetails, ...pensionAmount, ...Bankfee} )
+    user.save((err)=> {
+    });
+
      res.json([{...personDetails, ...pensionAmount, ...Bankfee}]); //merged into one object for frontend
 
   } catch (err) {
-    console.error(err),
+    
       res.status(500).json({ error: err.message });
   }
 };

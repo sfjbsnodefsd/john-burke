@@ -1,5 +1,5 @@
 <div class="container-sm globalStyle">
-  <form class="row g-3" style="margin-top: 50px; margin-bottom: 50px">
+  <form class="row g-3" style="margin-top: 20px; margin-bottom: 20px">
     <div class="col-auto">
       <span
         class="input-group-text"
@@ -39,7 +39,8 @@
 <!-- ////////////////////////////////////////////////////////////// -->
 
 
-  <body *ngIf="(searchService.pensioners.length == 1)"> 
+  <body *ngIf="(searchService.pensioners.length == 1) 
+  && (cantfindID ==200)"> 
     <div class="card " >
       <div
         class="card-body"
@@ -116,7 +117,7 @@
 
     <div
       class="card"
-      style="margin-top: 40px;
+      style="
       margin-bottom: 40px"
     >
       <div

@@ -1,6 +1,8 @@
 
 table {
     counter-reset: row-num -1;
+    background-color: white;
+    margin-top: 60px;
 
   }
   table tr{

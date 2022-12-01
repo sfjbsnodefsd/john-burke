@@ -18,14 +18,15 @@ export class EditPensionerComponent implements OnInit {
   ) {}
   FadeOutEffect = '';
   statusCode = null;
+  ID = this.router.snapshot.params['id']
 
   onEdit(form: NgForm) {
     this.editService
-      .updatePensioner(this.router.snapshot.params['id'], form.value)
+      .updatePensioner(this.ID , form.value)
       .subscribe((res) => {
         console.log(res);
         this.statusCode = res.status
-       
+        localStorage.setItem("id",this.ID )
        
       },
       (error) => {
@@ -43,5 +44,8 @@ export class EditPensionerComponent implements OnInit {
 
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //set id from back button
+    localStorage.setItem("id",this.ID ) 
+  }
 }

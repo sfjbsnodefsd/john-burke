@@ -22,7 +22,8 @@ export class SearchPageComponent implements OnInit {
       (res) => {
         this.cantfindID = res.status;
         this.searchService.pensioners = res.body as Pensioner[];
-       this.idResult = id
+        
+       
       
       },
       (error) => {
@@ -35,7 +36,10 @@ export class SearchPageComponent implements OnInit {
   ngOnInit(): void {
     
     //get updated content on back button from edit 
+    if(this.idResult != null){
     this.getPensionANDDETAILS(this.idResult) 
+    }
+    localStorage.clear();
 
   }
 
