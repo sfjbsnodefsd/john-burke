@@ -9,7 +9,7 @@ const SignUpMember = async (req, res) => {
     const { email, password } = req.body;
     const salt =  bcrypt.genSaltSync(10);
     const hash = await bcrypt.hash(password, salt)
-    console.log
+    
     const member1 = await member.create({email, password: hash})
     member1.save()
 
@@ -19,9 +19,9 @@ const SignUpMember = async (req, res) => {
     })
   } catch (err) {
 
-    console.log(err)
+  
 
-    res.status(500).json(
+    res.status(409).json(
       {
         error: err
       })

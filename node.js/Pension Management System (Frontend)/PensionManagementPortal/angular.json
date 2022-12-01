@@ -88,7 +88,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               
-              "src/assets/shield.png",
+              "src/asset/PIcon.png",
               "src/assets"
             ],
             "styles": [

@@ -11,13 +11,17 @@ const AuthURL = 'http://localhost:5000';
 })
 
 export class SignupService {
-
+   private emailExists = false
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false
 
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  getEmailExists(){
+    return this.emailExists
+  }
 
   getToken() {
     return this.token
@@ -46,9 +50,8 @@ export class SignupService {
   SignUpMember(email: string, password: string) {
     const memberData: MemberData = { email: email, password: password }
 
-    this.http.post(`${AuthURL}/SignUp`, memberData).subscribe(res => {
-      this.router.navigate([""])
-    })
+    return this.http.post(`${AuthURL}/SignUp`, memberData,)
+
   }
 
   SignInMember(email: string, password: string) {

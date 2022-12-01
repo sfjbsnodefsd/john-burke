@@ -1,0 +1,6 @@
+projectKey=SonarQube-john
+serverUrl=http://localhost:9000
+serverVersion=9.7.1.62043
+dashboardUrl=http://localhost:9000/dashboard?id=SonarQube-john
+ceTaskId=AYTOIkIV5Sgaah8svqkL
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYTOIkIV5Sgaah8svqkL

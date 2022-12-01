@@ -19,7 +19,7 @@ const ImportDetailsFromCSV = async (req, res) => {
         } else {
           
           return res
-            .status(500)
+            
             .json({ message: "Data already inserted", csvData });
         }
       });
