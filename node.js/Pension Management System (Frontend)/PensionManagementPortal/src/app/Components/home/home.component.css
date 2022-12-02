@@ -1,21 +1,15 @@
-
-
-/* body{background-image: url("/src/assets/paperOld.jpg");} */
-
-  .cardStyle{
-
-    margin-top: 40px; 
-    min-width: fit-content;
-   }
-
-.formStyle{
-  margin: 80px; 
+.cardStyle {
+  margin-top: 40px;
   min-width: fit-content;
 }
 
-.labelStyle{
+.formStyle {
+  margin: 80px;
+  min-width: fit-content;
+}
+
+.labelStyle {
   color: red;
   font-size: 70%;
   opacity: 0.55;
 }
-  

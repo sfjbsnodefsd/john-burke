@@ -28,3 +28,13 @@ footer {
 
   min-height: 100%;
 }
+
+
+.fade-out-text{
+
+  animation: fadeOut 5s forwards;
+} 
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

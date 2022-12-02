@@ -11,7 +11,7 @@ const AuthURL = 'http://localhost:5000';
 })
 
 export class SignupService {
-   private emailExists = false
+  private emailExists = false
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false
@@ -19,7 +19,7 @@ export class SignupService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getEmailExists(){
+  getEmailExists() {
     return this.emailExists
   }
 
@@ -50,7 +50,8 @@ export class SignupService {
   SignUpMember(email: string, password: string) {
     const memberData: MemberData = { email: email, password: password }
 
-    return this.http.post(`${AuthURL}/SignUp`, memberData,)
+    return this.http.post(`${AuthURL}/SignUp`, memberData)
+
 
   }
 
@@ -61,13 +62,13 @@ export class SignupService {
       .subscribe(res => {
         const token = res.token
         this.token = token
-       if(token){
+        if (token) {
           //inform other components of authnecation
           this.authStatusListener.next(true)
           this.isAuthenticated = true;
           //redirect on login
           this.router.navigate(["SearchPage"])
-       }
+        }
       })
   }
 }

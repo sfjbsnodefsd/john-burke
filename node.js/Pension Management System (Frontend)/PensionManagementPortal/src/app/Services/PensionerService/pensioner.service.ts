@@ -14,7 +14,7 @@ const ProcessURL = 'http://localhost:5002';
 })
 export class PensionerService {
   pensioners: Pensioner[] = []
- 
+
 
   constructor(private http: HttpClient) { }
 
@@ -23,21 +23,20 @@ export class PensionerService {
   }
 
 
-  
   getPension(id: any) {    //get pension and details
-   
-    return this.http.get(`${ProcessURL}/${id}/Details_Pension`,{observe: 'response'}) 
+
+    return this.http.get(`${ProcessURL}/${id}/Details_Pension`, { observe: 'response' })
   }
 
-  updatePensioner(id: any, pensioner:  Pensioner) {
-    return this.http.put(`${DetailsURL}/${id}/update`, pensioner,{observe: 'response'} );
+  updatePensioner(id: any, pensioner: Pensioner) {
+    return this.http.put(`${DetailsURL}/${id}/update`, pensioner, { observe: 'response' });
   }
 
   ImportCSVData() {
-    return this.http.post(`${DetailsURL}/importCSV`,{observe: 'response'})   
+    return this.http.post(`${DetailsURL}/importCSV`, { observe: 'response' })
   }
 
 
-  
+
 
 }

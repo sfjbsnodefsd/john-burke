@@ -12,7 +12,7 @@ import { SignupService } from 'src/app/Services/TokenService/signup.token.servic
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(public signupService: SignupService, private router: Router) {}
+  constructor(public signupService: SignupService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PensionerService } from 'src/app/Services/PensionerService/pensioner.service';
 import { Pensioner } from 'src/app/Model/pensioner.model';
-import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-search-page',
@@ -9,11 +9,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./search-page.component.css'],
 })
 export class SearchPageComponent implements OnInit {
-  constructor(
-    public searchService: PensionerService,
-    private router: ActivatedRoute
-  ) {}
-  idResult= localStorage.getItem("id")
+
+  constructor(public searchService: PensionerService) { }
+  idResult = localStorage.getItem('id');
   cantfindID = null;
 
   //get pension and details
@@ -22,9 +20,6 @@ export class SearchPageComponent implements OnInit {
       (res) => {
         this.cantfindID = res.status;
         this.searchService.pensioners = res.body as Pensioner[];
-        
-       
-      
       },
       (error) => {
         this.cantfindID = error.status; // displaying no aadhaar found by status code
@@ -34,14 +29,10 @@ export class SearchPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    //get updated content on back button from edit 
-    if(this.idResult != null){
-    this.getPensionANDDETAILS(this.idResult) 
+    //get updated content on back button from edit
+    if (this.idResult != null) {
+      this.getPensionANDDETAILS(this.idResult);
     }
     localStorage.clear();
-
   }
-
-
 }

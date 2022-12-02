@@ -1,16 +1,14 @@
-ul, li {
-    list-style-type: none;
+
+ol {
+  list-style-type: none;
+}
+
+a {
+  color: white;
+  
 }
 
 
-a{
-    color: white;
-    display: inline;
-}
-.inline{
-    display: inline;
-}
-
-nav{
-    min-height: 10%;
+nav {
+  min-height: 10%;
 }

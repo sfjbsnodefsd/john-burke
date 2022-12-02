@@ -1,58 +1,23 @@
-<nav class="navbar cat" style="background-color: #437fc7; color: white">
-  <div class=" container-sm globalStyle" style="width: 800px;">
+<nav class="navbar">
+  <div class="container-sm globalStyle">
     <a routerLink="login" href="#">
-      <h2>PENSION PORTAL</h2></a
-    >
+      <h2>PENSION PORTAL</h2>
+    </a>
+
+    <a *ngIf="userIsAuth" class="navbar-brand" routerLink="Pension" href="#">Person List</a>
+
+    <a *ngIf="userIsAuth" class="navbar-brand" routerLink="SearchPage" href="#">Pension</a>
+
+    <a *ngIf="!userIsAuth" class="navbar-brand " routerLink="SignUp" href="#">SIGN UP</a>
 
 
+    <ol *ngIf="userIsAuth">
+      <li class="navbar-brand " style="color: #ffff00ad">Logged in</li>
 
-  <!-- *ngIf = "userIsAuth" -->
-<li>
-  <a
+      <button type="button" class="btn btn-light " (click)="onlogout()">
+        LOGOUT
+      </button>
+    </ol>
 
-    class="navbar-brand"
-    routerLink="Pension"
-    href="#"
-    >Person List</a
-  ></li>
-  <li>
-    <!-- *ngIf = "userIsAuth" -->
-  <a  
-    class="navbar-brand"
-    routerLink="SearchPage"
-    href="#"
-    >Pension</a
-  >
-  
-</li>
-
-  <li>
-  <a
-  *ngIf = "!userIsAuth"
-  class="navbar-brand"
-  routerLink="SignUp"
-  href="#"
-  >SIGN UP</a
->
-</li>
-<ul  style="margin-top: 20px;" >
-<li>
-  <a
-  *ngIf = "userIsAuth"
-  class="navbar-brand inline"
-  style="color: #ffff00ad;"
-  >LOGGEDIN</a
->
-</li>
-  <li *ngIf = "userIsAuth">
-    <button type="button"
-    
-    class="btn btn-light inline"
-    (click)="onlogout()">
-    LOGOUT</button>
-  </li>
-</ul>
-</div>
-
-
+  </div>
 </nav>

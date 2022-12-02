@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 //works like middleware like nodejs for outgoing instead of incoing requests
 //takes request and adds the auth token to it
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(public signupService: SignupService) {}
+  constructor(public signupService: SignupService) { }
   //getToken method from signup service
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const authToken = this.signupService.getToken();

@@ -1,61 +1,39 @@
 <div class="container-sm globalStyle">
   <form class="row g-3" style="margin-top: 20px; margin-bottom: 20px">
     <div class="col-auto">
-      <span
-        class="input-group-text"
-        id="basic-addon1"
-        style="color: #437fc7; font-weight: bold"
-        >Aadhaar Number</span
-      >
+      <span class="input-group-text" id="basic-addon1" style="color: #437fc7; font-weight: bold">Aadhaar Number</span>
     </div>
     <div class="col-auto">
-      <input
-        type="text"
-        placeholder="Enter number"
-        #AadhaarNum
-        class="form-control"
-      />
+      <input type="text" placeholder="Enter number" #AadhaarNum class="form-control" />
     </div>
     <div class="col-auto">
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        (click)="getPensionANDDETAILS(AadhaarNum.value)"
-      >
+      <button type="button" class="btn btn-outline-primary" (click)="getPensionANDDETAILS(AadhaarNum.value)">
         SEARCH
       </button>
     </div>
   </form>
 
-  
-<!-- /////////////////ERROR STATUS////////////////////////////////// -->
+  <!-- /////////////////ERROR STATUS////////////////////////////////// -->
   <!-- cant find aadhaar filter by status code -->
-    <div class="card border-danger "*ngIf="(cantfindID==404)">
-      <div class="card-body text-danger">
-        <h5 class="card-title">Not Found...</h5>
-        <p class="card-text">Enter valid Aadhaar ID</p>
-      </div>
+  <div class="card border-danger " *ngIf="(cantfindID==404)">
+    <div class="card-body text-danger">
+      <h5 class="card-title">Not Found...</h5>
+      <p class="card-text">Enter valid Aadhaar ID</p>
     </div>
-<!-- ////////////////////////////////////////////////////////////// -->
-
+  </div>
+  <!-- ////////////////////////////////////////////////////////////// -->
 
   <body *ngIf="(searchService.pensioners.length == 1) 
-  && (cantfindID ==200)"> 
-    <div class="card " >
-      <div
-        class="card-body"
-        style="padding: 60px"
-        *ngFor="let pen of searchService.pensioners"
-      >
+  && (cantfindID ==200)">
+    <div class="card ">
+      <div class="card-body" style="padding: 60px" *ngFor="let pen of searchService.pensioners">
         <h4>
           <strong>Pensioner</strong>
           {{ pen.Name }}
         </h4>
 
-        <table
-          class="table table-bordered"
-          style="background-color: white; padding: 40px"
-        >
+        <table class="table table-bordered" style="background-color: white; padding: 40px">
+          <caption>Pensioner details</caption>
           <tbody>
             <tr>
               <th>Aadhaar</th>
@@ -97,13 +75,8 @@
         </table>
 
         <div class="col-auto">
-          <button
-            type="button"
-            style="margin-top: 10px; background-color: pink; float: right;"
-            class="btn btn-outline-primary"
-             routerLink="/Edit/{{ pen.aadhaar }}"
-  
-          >
+          <button type="button" style="margin-top: 10px; background-color: pink; float: right;"
+            class="btn btn-outline-primary" routerLink="/Edit/{{ pen.aadhaar }}">
             EDIT
           </button>
         </div>
@@ -111,25 +84,16 @@
       </div>
     </div>
 
-    <!-- 
-
-  /////////////////Pension//////////////////////////////// -->
-
-    <div
-      class="card"
-      style="
-      margin-bottom: 40px"
-    >
-      <div
-        class="card-body"
-        style="padding: 40px;"
-        *ngFor="let pen of searchService.pensioners"
-      >
+    <!--/////////////////Pension//////////////////////////////// -->
+    <div class="card" style="
+      margin-bottom: 40px">
+      <div class="card-body" style="padding: 40px;" *ngFor="let pen of searchService.pensioners">
         <table class="table table-bordered" style="background-color: white">
+          <caption>Pension Quote</caption>
           <tbody>
             <tr>
               <th scope="col-auto">Pension Amount</th>
-              <th scope="col-auto">BANK FEE</th>
+              <th scope="col-auto">Bank Charge</th>
             </tr>
             <tr>
               <td>{{ pen.pensionAmount }}</td>
@@ -141,4 +105,3 @@
     </div>
   </body>
 </div>
-

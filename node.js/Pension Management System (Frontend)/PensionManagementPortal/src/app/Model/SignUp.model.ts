@@ -1,5 +1,6 @@
 export interface MemberData {
 
-    email: String
+    email: string
     password: string
+    
 }

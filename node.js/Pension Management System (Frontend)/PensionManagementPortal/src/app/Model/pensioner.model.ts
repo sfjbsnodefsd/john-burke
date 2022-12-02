@@ -1,24 +1,25 @@
 export interface Pensioner {
-  aadhaar: Number;
+  aadhaar: number;
 
-  Name: String;
+  Name: string;
 
-  Date_of_birth: String;
+  Date_of_birth: string;
 
-  PAN: String;
+  PAN: string;
 
-  SalaryEarned: Number;
+  SalaryEarned: number;
 
-  Allowances: Number;
+  Allowances: number;
 
-  Self_or_Family_pension: String;
+  Self_or_Family_pension: string;
 
-  Bank_Name: String;
+  Bank_Name: string;
 
-  Bank_Acc_No: Number;
+  Bank_Acc_No: number;
 
-  Public_Private_Bank: String;
+  Public_Private_Bank: string;
+
+  pensionAmount: number;
   
-  pensionAmount: Number;
-  Bankfee : String;
+  Bankfee: string;
 }

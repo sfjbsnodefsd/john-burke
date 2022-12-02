@@ -1,34 +1,24 @@
 <div class="container-sm globalStyle">
+
   <body>
-    <div
-      class="card"
-      style="margin-top: 40px"
-    >
-      <div
-        class="card-body"
-        style="padding: 60px;"
-        *ngFor="let pen of editService.pensioners"
-      >
+    <div class="card" style="margin-top: 40px">
+      <div class="card-body" style="padding: 60px" *ngFor="let pen of editService.pensioners">
         <h4>
           <strong>Pensioner</strong>
           {{ pen.Name }}
         </h4>
         <form class="formStyle" (submit)="onEdit(editForm)" #editForm="ngForm">
-          <table
-            class="table table-bordered"
-            style="background-color: white; padding: 40px"
-          >
+          <table class="table table-bordered" style="background-color: white; padding: 40px">
+            <caption>
+              Edit form
+            </caption>
             <tbody>
               <tr>
                 <th>
                   <label>DOB</label>
                 </th>
                 <td>
-                  <input
-                    type="date"
-                    name="Date_of_birth"
-                    [(ngModel)]="pen.Date_of_birth"
-                  />
+                  <input type="date" name="Date_of_birth" [(ngModel)]="pen.Date_of_birth" />
                 </td>
               </tr>
               <tr>
@@ -36,13 +26,7 @@
                   <label>PAN</label>
                 </th>
                 <td>
-                  <input
-                    type="text"
-                    name="PAN"
-                    maxlength="6"
-                    minlength="6"
-                    [(ngModel)]="pen.PAN"
-                  />
+                  <input type="text" name="PAN" maxlength="6" minlength="6" [(ngModel)]="pen.PAN" />
                 </td>
               </tr>
               <tr>
@@ -50,13 +34,7 @@
                   <label>Salary</label>
                 </th>
                 <td>
-                  <input
-                    type="number"
-                    name="SalaryEarned"
-                    maxlength="5"
-                    minlength="5"
-                    [(ngModel)]="pen.SalaryEarned"
-                  />
+                  <input type="number" name="SalaryEarned" maxlength="5" minlength="5" [(ngModel)]="pen.SalaryEarned" />
                 </td>
               </tr>
               <tr>
@@ -64,13 +42,7 @@
                   <label>Allowances</label>
                 </th>
                 <td>
-                  <input
-                    type="number"
-                    name="Allowances"
-                    maxlength="3"
-                    minlength="3"
-                    [(ngModel)]="pen.Allowances"
-                  />
+                  <input type="number" name="Allowances" maxlength="3" minlength="3" [(ngModel)]="pen.Allowances" />
                 </td>
               </tr>
               <tr>
@@ -78,12 +50,7 @@
                   <label>Pension Type</label>
                 </th>
                 <td>
-                  <select
-                    class="form-control"
-                    name="Self_or_Family_pension"
-                    [(ngModel)]="pen.Self_or_Family_pension"
-                  >
-                    <!-- <option>{{ pen.Self_or_Family_pension }}</option> -->
+                  <select class="form-control" name="Self_or_Family_pension" [(ngModel)]="pen.Self_or_Family_pension">
                     <option>FAMILY</option>
                     <option>SELF</option>
                   </select>
@@ -95,11 +62,7 @@
                   <label>Bank Name</label>
                 </th>
                 <td>
-                  <select
-                    class="form-control"
-                    name="Bank_Name"
-                    [(ngModel)]="pen.Bank_Name"
-                  >
+                  <select class="form-control" name="Bank_Name" [(ngModel)]="pen.Bank_Name">
                     <option>AIB</option>
                     <option>BOI</option>
                     <option>TSB</option>
@@ -111,13 +74,7 @@
                   <label>Bank Number</label>
                 </th>
                 <td>
-                  <input
-                    type="number"
-                    name="Bank_Acc_No"
-                    maxlength="8"
-                    minlength="8"
-                    [(ngModel)]="pen.Bank_Acc_No"
-                  />
+                  <input type="number" name="Bank_Acc_No" maxlength="8" minlength="8" [(ngModel)]="pen.Bank_Acc_No" />
                 </td>
               </tr>
               <tr>
@@ -125,11 +82,7 @@
                   <label>Bank Type</label>
                 </th>
                 <td>
-                  <select
-                    class="form-control"
-                    name="Public_Private_Bank"
-                    [(ngModel)]="pen.Public_Private_Bank"
-                  >
+                  <select class="form-control" name="Public_Private_Bank" [(ngModel)]="pen.Public_Private_Bank">
                     <option>PUBLIC</option>
                     <option>PRIVATE</option>
                   </select>
@@ -138,45 +91,28 @@
             </tbody>
           </table>
           <div class="col-auto">
-            <button
-              type="submit"
-              style="margin-top: 10px; background-color: pink; float: right"
-              class="btn btn-outline-primary"
-              (click)="FadeOut()"
-            >
+            <button type="submit" style="margin-top: 10px; background-color: pink; float: right"
+              class="btn btn-outline-primary" (click)="FadeOut()">
               Update
             </button>
 
-            <button
-            type="button"
-            style="margin-top: 10px; background-color: pink; float: left"
-            class="btn btn-outline-primary"
-            routerLink="/SearchPage"> Back
-          </button>
-            
+            <button type="button" style="margin-top: 10px; background-color: pink; float: left"
+              class="btn btn-outline-primary" routerLink="/SearchPage">
+              Back
+            </button>
           </div>
         </form>
       </div>
     </div>
     <!-- /////////////////Updated success header////////////////////////// -->
 
-    <div
-      class="card border-primary mb-3"
-      [ngClass]="FadeOutEffect"
-      *ngIf="statusCode == 200 "
-      style="margin-top: 10px"
-    >
+    <div class="card border-primary mb-3" [ngClass]="FadeOutEffect" *ngIf="statusCode == 200" style="margin-top: 10px">
       <div class="card-body text-primary">
         <h5 class="card-title" style="text-align: center">UPDATED!</h5>
       </div>
     </div>
     <!-- /////////////////NO CHANGES MADE HEADER////////////////////////////////// -->
-    <div
-      class="card border-danger mb-3"
-      [ngClass]="FadeOutEffect"
-      *ngIf="statusCode == 400 "
-      style="margin-top: 10px"
-    >
+    <div class="card border-danger mb-3" [ngClass]="FadeOutEffect" *ngIf="statusCode == 400" style="margin-top: 10px">
       <div class="card-body text-danger">
         <h5 class="card-title" style="text-align: center">NOT UPDATED!</h5>
         <p class="card-title" style="text-align: center">No changes made.</p>

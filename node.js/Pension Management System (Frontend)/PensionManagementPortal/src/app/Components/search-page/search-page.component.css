@@ -1,29 +1,25 @@
-th, td {
- 
+th,
+td {
   padding: 10px;
   text-align: left;
- 
 }
-table{
-
+table {
   margin-bottom: 0;
-  
 }
 
 tr:nth-child(odd) {
   background-color: rgba(0, 0, 0, 0.081);
-  }
+}
 
-
-th{
-  color:  #437fc7;
+th {
+  color: #437fc7;
 }
 h4 strong {
   display: block;
   font-size: 70%;
   opacity: 0.55;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
-h4{
-  margin-bottom: 20px
+h4 {
+  margin-bottom: 20px;
 }

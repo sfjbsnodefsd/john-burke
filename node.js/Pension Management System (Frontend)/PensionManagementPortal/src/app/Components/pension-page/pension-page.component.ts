@@ -26,7 +26,5 @@ export class PensionPageComponent implements OnInit {
       this.ImportCSVData();
     }
     this.getPensionerList();
-    
-
   }
 }

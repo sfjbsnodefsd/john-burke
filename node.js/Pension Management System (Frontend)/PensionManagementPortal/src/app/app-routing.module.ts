@@ -10,23 +10,23 @@ import { AuthGuard } from './Services/Auth/auth-guard.service';
 
 // canActivate:[AuthGuard] 
 
-const routes: Routes = 
-[
-  {path :"login", component:HomeComponent},
-  {path :"Pension", component:PensionPageComponent, },
-  {path :"SearchPage", component:SearchPageComponent,},
-  {path: "SignUp", component:SignUpComponent},
-  {path: "Edit/:id", component:EditPensionerComponent},
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-];
+const routes: Routes =
+  [
+    { path: "login", component: HomeComponent },
+    { path: "Pension", component: PensionPageComponent, canActivate:[AuthGuard] },
+    { path: "SearchPage", component: SearchPageComponent, canActivate:[AuthGuard] },
+    { path: "SignUp", component: SignUpComponent },
+    { path: "Edit/:id", component: EditPensionerComponent,canActivate:[AuthGuard] },
+    {
+      path: '',
+      redirectTo: 'login',
+      pathMatch: 'full'
+    },
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers : [AuthGuard]
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

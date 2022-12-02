@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SignupService } from 'src/app/Services/TokenService/signup.token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,9 +9,10 @@ import { SignupService } from 'src/app/Services/TokenService/signup.token.servic
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-  constructor(public signupService: SignupService) {}
+  constructor(public signupService: SignupService, private router: Router) { }
 
   emailexists = null;
+  FadeOutEffect = '';
 
   onSignUp(form: NgForm) {
     if (form.invalid) {
@@ -19,14 +21,24 @@ export class SignUpComponent implements OnInit {
 
     this.signupService
       .SignUpMember(form.value.email, form.value.password)
-      .subscribe({next:res =>{
-        this.emailexists = 201;
-      },error : error => {
+      .subscribe({
+        next: (res) => {
+          this.emailexists = 201;
+          this.router.navigate(['']);
+        },
+        error: (error) => {
           this.emailexists = 409;
-        }
-  });
-    
+        },
+      });
   }
 
-  ngOnInit(): void {}
+  FadeOut() {
+    //calls fade out class which is on update section
+    this.FadeOutEffect = '';
+    setTimeout(() => {
+      this.FadeOutEffect = 'fade-out-text';
+    }, 0);
+  }
+
+  ngOnInit(): void { }
 }
