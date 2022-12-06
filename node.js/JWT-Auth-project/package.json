@@ -4,7 +4,8 @@
   "description": "nodejs App for rest API functions & JWT token",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "sonar": "sonar-scanner"
   },
   "author": "johnburke",
   "license": "ISC",
