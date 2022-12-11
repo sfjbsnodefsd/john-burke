@@ -1,0 +1,13 @@
+{
+  "name": "pension-management-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "StartAllServers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sonar": "sonar-scanner"
+
+  },
+  "author": "",
+  "license": "ISC"
+}

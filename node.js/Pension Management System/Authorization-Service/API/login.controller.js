@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const member = require("./login.model");
 
 ////////SIGNUP////////////
-const SignUpMember = async (req, res) => {
+const SignUpMember = async (req, res, next) => {
 
   try {
     const { email, password } = req.body;
@@ -13,20 +13,21 @@ const SignUpMember = async (req, res) => {
     const member1 = await member.create({email, password: hash})
     member1.save()
 
-    return res.status(201).json({
+    res.status(201)
+    return res.json({
       message: 'Member Created!',
-      result: member1
+      result: email, password
     })
   } catch (err) {
 
-  
-
-    res.status(409).json(
+   res.status(409)
+    res.json(
       {
         error: err
       })
   }
 }
+
 
 ///login///////
 const loginMember = async (req, res) => {
@@ -52,7 +53,7 @@ const loginMember = async (req, res) => {
   }
   catch (err) {
     console.log(err)
-    res.status(401).json({ error: err, message: "Auth failed" })
+    res.status(401).json({ error: err, message: "Auth failedd" })
   }
 }
 

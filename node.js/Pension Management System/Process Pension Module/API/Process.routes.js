@@ -5,8 +5,8 @@ const router = express.Router();
 const checkToken = require("../Auth/Auth.verifyToken")
 
 // checkToken,
-router.get("/:aadhaar/Details_Pension", MemberDetails_Pension)
-router.get("/:aadhaar/pension", PensionAmount)
+router.get("/:aadhaar/Details_Pension",  MemberDetails_Pension)
+router.get("/:aadhaar/pension",  PensionAmount)
 
 
 

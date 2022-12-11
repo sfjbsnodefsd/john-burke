@@ -6,9 +6,8 @@ const loginSchema = new Schema({
   email: {
     type: String,
     required: true,
-    trim: true,
-    lowercase: true,
-    unique: true,
+
+    
   },
 
   password: { type: String, required: true }
@@ -17,6 +16,6 @@ const loginSchema = new Schema({
 
 
 
-loginSchema.plugin(validator) //for checking duplicates
+//loginSchema.plugin(validator) //for checking duplicates
 
 module.exports = member = mongoose.model("Login", loginSchema);

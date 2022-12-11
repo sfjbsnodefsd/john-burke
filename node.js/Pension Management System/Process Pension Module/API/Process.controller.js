@@ -29,7 +29,7 @@ const MemberDetails_Pension = async (req, res) => {
       return res.status(404).json([{...personDetails, ...pensionAmount, ...Bankfee}])
     }
 
-    var user = database({...personDetails, ...pensionAmount, ...Bankfee} )
+    let user = database({...personDetails, ...pensionAmount, ...Bankfee} )
     user.save((err)=> {
     });
 
