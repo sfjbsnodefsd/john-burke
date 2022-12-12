@@ -9,7 +9,7 @@ const PensionerByID = async (req, res) => {
     );
     //check if exists
     if (!PensionerID) {
-      return res.status(404).json({ message: "No Aadhaar ID found..." });
+      return res.status(404).json({ message: "No Aadhaar ID found...", Aadhaar : Pensioner.aadhaar});
     }
     //return pensioner
     res.json(PensionerID);
@@ -18,11 +18,12 @@ const PensionerByID = async (req, res) => {
   }
 };
 
-const PensionerList = async (req, res) => {
+const PensionerList = async (req, res, next) => {
   try {
     const PensionerList = await Pensioner.find({}, { _id: 0, __v: 0 });
     res.json(PensionerList);
   } catch (err) {
+    next(err)
     res.status(500).json({ error: err.message });
   }
 };

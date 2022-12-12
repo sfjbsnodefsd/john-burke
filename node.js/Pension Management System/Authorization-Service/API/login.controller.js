@@ -10,20 +10,23 @@ const SignUpMember = async (req, res, next) => {
     const salt =  bcrypt.genSaltSync(10);
     const hash = await bcrypt.hash(password, salt)
     
-    const member1 = await member.create({email, password: hash})
+    const member1 = await member.create({email, password})
+    
+    member1.password = hash
+    
     member1.save()
 
     res.status(201)
     return res.json({
       message: 'Member Created!',
-      result: email, password
+      result: member1
     })
   } catch (err) {
-
+    console.log(err)
    res.status(409)
     res.json(
       {
-        error: err
+        errors: err
       })
   }
 }
