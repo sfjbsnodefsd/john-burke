@@ -1,27 +1,41 @@
-// const request = require("supertest")
-// const app =  require("../../app")
-// const newLogin = require("../mock-data/newLogin.json");
-// const mongoose = require("mongoose");
-
-// beforeAll(async () => {
-//     await mongoose.disconnect();
-//     await mongoose.connect("mongodb://127.0.0.1:27017/PenAuthDB", { useNewUrlParser: true });
-//   });
+const request = require("supertest");
+const app = require("../../app");
+const { connectDB, dropDB, dropCollections } = require("../../setuptestdb");
+const loginMockData = require("../mock-data/newLogin.json");
+const LoginModel = require("../../API/login.model");
 
 
-// const endpointUrl = "/SignUp"
-//  jest.useFakeTimers()
 
-// describe(endpointUrl,  () => {
-//     it("POST" + endpointUrl, async () =>{
-//         const response = await request(app)
-//         .post(endpointUrl)
-//         .send(newLogin)
-//         expect(response.statusCode).toBe(201)
-//         expect(response.body.result.email).toBe(newLogin.email)
-//         expect(response.body.result.password).toBe(newLogin.password)
-        
+beforeAll(async () => {
+  await connectDB();
+});
+beforeEach(async () => {
+  const newMember = await LoginModel(loginMockData);
+  await newMember.save();
+});
+afterAll(async () => {
+  await dropDB();
+});
+afterEach(async () => {
+  await dropCollections();
+});
 
-//     })
-// })
-
+describe("/SignUpMemeber", () => {
+  test("POST " + "/SignUp", async () => {
+    const response = await request(app).post("/SignUp").send(loginMockData);
+    expect(response.statusCode).toBe(201);
+    expect(response.body.result.email).toBe(loginMockData.email);
+  });
+});
+test(
+  "should return error 409 on malformed data with POST" + "/SignUp",
+  async () => {
+    const response = await request(app)
+      .post("/SignUp")
+      .send({ email: "wrongFormat" });
+    expect(response.statusCode).toBe(409);
+    expect(response.body).toStrictEqual({
+      errors: {},
+    });
+  }
+);

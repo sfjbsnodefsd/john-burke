@@ -1,6 +1,6 @@
 const Pensioner = require("./Pensioner.model");
 
-const PensionerByID = async (req, res) => {
+const PensionerByID = async (req, res, next) => {
   try {
     //get pensioner by aadhaar
     const PensionerID = await Pensioner.findOne(
@@ -9,11 +9,12 @@ const PensionerByID = async (req, res) => {
     );
     //check if exists
     if (!PensionerID) {
-      return res.status(404).json({ message: "No Aadhaar ID found...", Aadhaar : Pensioner.aadhaar});
+      return res.status(404).json({ message: "No Aadhaar ID found..."});
     }
     //return pensioner
     res.json(PensionerID);
   } catch (err) {
+    next(err)
     res.status(500).json({ error: err, message: "Find AadhaarID failed" });
   }
 };

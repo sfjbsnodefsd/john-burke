@@ -42,10 +42,10 @@ describe("/PensionerList", () => {
     expect(response.body[0].Public_Private_Bank).toBeDefined();
    
     firstPensioner = response.body[0];
-    newPensionerId = response.body[0].aadhaar;
    });
 
-  test("GET by aadhaar " + "/:aadhaar", async () => {
+
+  test("GET by aadhaar ID " + "/:aadhaar", async () => {
 
     const response = await request(app).get("/"+ firstPensioner.aadhaar);
     expect(response.statusCode).toBe(200);
@@ -58,6 +58,8 @@ describe("/PensionerList", () => {
     expect(response.statusCode).toBe(500);
   });
 
+
+
   test("PUT " + "/:aadhaar/update", async () => {
     const testData = { "Name": "John", "Allowances" : "500"};
     const response = await request(app)
@@ -67,7 +69,7 @@ describe("/PensionerList", () => {
     expect(response.body).toStrictEqual( {"UpdatedCount": 1});
     
   });
-  it("should return 500 on PUT " + "/:aadhaar/update", async () => {
+  it("should return 400 on PUT " + "/:aadhaar/update", async () => {
     const testData = { "Name": "John", "Allowances" : "500"};
     const response = await request(app)
       .put("/" + nonExistingAADHAAR +"/update" )

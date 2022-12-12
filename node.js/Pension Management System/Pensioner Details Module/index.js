@@ -2,7 +2,7 @@ const express = require("express");
 const Router = require("./API/Pensioner.routes");
 const app = express();
 
-var cors = require('cors') //enabled cors for ports
+let cors = require('cors') //enabled cors for ports
 app.use(cors({ origin: 'http://localhost:4200' }))
 
 
