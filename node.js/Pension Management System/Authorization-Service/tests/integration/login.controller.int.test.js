@@ -1,10 +1,8 @@
 const request = require("supertest");
 const app = require("../../app");
-const { connectDB, dropDB, dropCollections } = require("../../setuptestdb");
+const { connectDB, dropDB, dropCollections } = require("../../TestMockDB");
 const loginMockData = require("../mock-data/newLogin.json");
 const LoginModel = require("../../API/login.model");
-
-
 
 beforeAll(async () => {
   await connectDB();

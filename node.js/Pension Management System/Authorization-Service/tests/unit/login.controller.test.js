@@ -39,35 +39,4 @@ describe("loginController.SignUpMember", () => {
   });
 });
 
-///////login/////
-// describe("loginController.LoginMember", () => {
-//   beforeEach(() => {
-//     req.body = newLogin;
-//   });
 
-
-//   it("should have a LoginMemberfunction", () => {
-//     expect(typeof loginController.loginMember).toBe("function");
-//   });
-//   it("should call MemberModel.findOne()", async () => {
-//     await loginController.loginMember(req, res, next);
-//     expect(MemberModel.findOne).toBeCalledWith({email: newLogin.email});
-//   });
-//   it("should return 200 response code", async () => {
-//     req.body = newLogin;
-    
-
-//     await loginController.loginMember(req, res, next);
-//     expect(res.statusCode).toBe(200);
-//     expect(res._isEndCalled()).toBeTruthy();
-//   });
-//   it("should return json body in response", async () => {
-//     const result = newLogin
-//     MemberModel.findOne.mockReturnValue(newLogin);
-//     await loginController.loginMember(req, res, next);
-//     expect(res._getJSONData()).toStrictEqual({
-//       message: "Member Created!",
-//       result
-//     });
-//   });
-// });

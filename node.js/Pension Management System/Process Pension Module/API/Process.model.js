@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const validator = require("mongoose-unique-validator")
 
+//Saves pensionAmount with details in Database
+
+
 const PensionSchema = new Schema({
 
   aadhaar:        { type: Number, require: true,index:{unique:true}},

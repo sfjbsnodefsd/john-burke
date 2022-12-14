@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../../index")
-const { connectDB, dropDB, dropCollections } = require("../../setuptestdb");
+const { connectDB, dropDB, dropCollections } = require("../../TestMockDB");
 const PensionerMockData = require("../mock-data/all-pensioners.json");
 const PensionerModel = require("../../API/Pensioner.model");
 

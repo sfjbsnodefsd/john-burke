@@ -1,6 +1,7 @@
 const express = require("express");
 const Router = require("./API/login.routes");
 const app = express();
+app.disable("x-powered-by"); //secuirty
 
 
 let cors = require('cors') //enabled cors for ports

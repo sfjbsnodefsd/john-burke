@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connect = async () => {
   try {
     await mongoose.connect(
-      "mongodb://127.0.0.1:27017/PenAuthDB",
+      "mongodb://127.0.0.1:27017/PensionDB",
       { useNewUrlParser: true },
       console.log("Connected to MongoDB")
       

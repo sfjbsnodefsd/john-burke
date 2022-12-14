@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1"
+    "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1 --coverage"
   },
   "jest": {
-  "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testResultsProcessor": "jest-sonar-reporter",
+    "collectCoverage": true
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +27,7 @@
     "supertest": "^6.3.3"
   },
   "devDependencies": {
+    "jest-sonar-reporter": "^2.0.0",
     "node-mocks-http": "^1.12.1"
   }
 }
