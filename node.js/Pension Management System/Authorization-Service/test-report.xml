@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\sfjbs\Documents\Main-training\node.js\Pension Management System\Authorization-Service\tests\integration\login.controller.int.test.js">
-    <testCase name="/SignUpMemeber POST /SignUp" duration="255"/>
-    <testCase name="should return error 409 on malformed data with POST/SignUp" duration="49"/>
-  </file>
-  <file path="C:\Users\sfjbs\Documents\Main-training\node.js\Pension Management System\Authorization-Service\tests\unit\login.controller.test.js">
-    <testCase name="loginController.SignUpMember should have a SignUpMemberfunction" duration="7"/>
-    <testCase name="loginController.SignUpMember should return 201 response code by calling MemberMode.create" duration="154"/>
-    <testCase name="loginController.SignUpMember should return json body in response" duration="102"/>
-  </file>
 </testExecutions>
