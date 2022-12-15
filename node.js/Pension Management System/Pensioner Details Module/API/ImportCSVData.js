@@ -1,5 +1,5 @@
 const PenModel = require("./Pensioner.model");
-const csvFilePath = "./PersonDetails.csv";
+const csvFilePath = "./20PersonDetailslist.csv";
 const csv = require("csvtojson");
 
 const ImportDetailsFromCSV = async (req, res) => {
