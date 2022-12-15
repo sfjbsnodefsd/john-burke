@@ -11,7 +11,6 @@ const AuthURL = 'http://localhost:5000';
 })
 
 export class SignupService {
-  private emailExists = false
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false
@@ -19,9 +18,7 @@ export class SignupService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getEmailExists() {
-    return this.emailExists
-  }
+
 
   getToken() {
     return this.token
@@ -38,10 +35,41 @@ export class SignupService {
   }
 
 
+  /////////////saving on refresh//////////////
+  private saveTokenData(token: string) {
+    localStorage.setItem("token", token)
+  }
+
+  private clearTokenData() {
+    localStorage.removeItem("token")
+  }
+
+  private getTokenData() {
+    const token = localStorage.getItem("token")
+    if (!token) {
+      return console.log("no token")
+    }
+    return { 
+      token: token 
+    }
+  }
+
+  AutoCheckToken() { ///this goes into app.component
+    const tokenInfo = this.getTokenData()
+    if (!tokenInfo) {
+      return
+    }
+    this.isAuthenticated = true
+    this.authStatusListener.next(true)
+    this.token = tokenInfo.token
+  }
+///////////////////////////////
+
   logout() {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+    this.clearTokenData()
     //redirect
     this.router.navigate([""])
   }
@@ -52,13 +80,12 @@ export class SignupService {
 
     return this.http.post(`${AuthURL}/SignUp`, memberData)
 
-
   }
 
   SignInMember(email: string, password: string) {
     const memberData: MemberData = { email: email, password: password }
     //expect token back
-    this.http.post<{ token: string }>(`${AuthURL}/login`, memberData)
+    return this.http.post<{ token: string }>(`${AuthURL}/login`, memberData)
       .subscribe(res => {
         const token = res.token
         this.token = token
@@ -66,8 +93,10 @@ export class SignupService {
           //inform other components of authnecation
           this.authStatusListener.next(true)
           this.isAuthenticated = true;
+          this.saveTokenData(token)
           //redirect on login
-          this.router.navigate(["SearchPage"])
+          this.router.navigate(["Pension"])
+
         }
       })
   }

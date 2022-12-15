@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
   constructor(public signupService: SignupService, private router: Router) { }
 
   emailexists = null;
@@ -40,5 +40,4 @@ export class SignUpComponent implements OnInit {
     }, 0);
   }
 
-  ngOnInit(): void { }
 }

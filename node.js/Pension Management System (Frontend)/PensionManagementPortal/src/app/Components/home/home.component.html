@@ -46,10 +46,19 @@
           >
         </div>
 
-        <button type="submit" class="btn btn-primary" style="margin-top: 20px">
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px"(click)="FadeOut()" >
           Login
         </button>
       </form>
     </div>
   </body>
+  <!-- /////////////////ERROR STATUS////////////////////////////////// -->
+  <div [ngClass]="FadeOutEffect" class="card border-danger" style="margin-top: 40px"
+   *ngIf="this.userIsAuth== false">
+    <div class="card-body text-danger">
+      <h5 class="card-title">error...</h5>
+      <p class="card-text">EMAIL DOES NOT EXIST</p>
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////// -->
 </div>

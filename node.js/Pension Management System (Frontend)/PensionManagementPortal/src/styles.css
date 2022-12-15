@@ -32,7 +32,7 @@ footer {
 
 .fade-out-text{
 
-  animation: fadeOut 5s forwards;
+  animation: fadeOut 4s forwards;
 } 
 @keyframes fadeOut {
   0% { opacity: 1; }

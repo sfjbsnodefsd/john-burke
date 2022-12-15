@@ -21,7 +21,8 @@ export class AuthInterceptor implements HttpInterceptor {
       headers: req.headers.set('Authorization', 'Bearer ' + authToken),
     });
 
-    return next.handle(authRequest).pipe(
+    return next.handle(authRequest)
+    .pipe(
       catchError((err, caught) => {
         if (err.status === 401) {
           this.signupService.logout();

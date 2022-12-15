@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userIsAuth = this.signupService.getIsAuth()
     this.authListenerSubs = this.signupService
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
