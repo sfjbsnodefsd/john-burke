@@ -1,20 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\sfjbs\Documents\Main-training\node.js\Pension Management System\Pensioner Details Module\tests\integration\Pensioner.controller.int.test.js">
-    <testCase name="/PensionerList GET /PensionerList" duration="175"/>
-    <testCase name="/PensionerList GET by aadhaar ID /:aadhaar" duration="81"/>
-    <testCase name="/PensionerList GET Pensioner by Aadhaar doesn&apos;t exist/:aadhaar" duration="66"/>
-    <testCase name="/PensionerList PUT /:aadhaar/update" duration="103"/>
-    <testCase name="/PensionerList should return 400 on PUT /:aadhaar/update" duration="79"/>
-  </file>
-  <file path="C:\Users\sfjbs\Documents\Main-training\node.js\Pension Management System\Pensioner Details Module\tests\unit\Pensioner.controller.test.js">
-    <testCase name="PensionerController .PensionerList  should have a PensionerList  function" duration="5"/>
-    <testCase name="PensionerController .PensionerList  should call PensionerModel.find({})" duration="4"/>
-    <testCase name="PensionerController .PensionerList  should return response with status 200 and all Pensioners" duration="23"/>
-    <testCase name="PensionerController .PensionerList  should handle errors in PensionerList " duration="3"/>
-    <testCase name="PensionerController.PensionerByID should have a PensionerByID function" duration="1"/>
-    <testCase name="PensionerController.PensionerByID should call PensionerModel.findOne " duration="2"/>
-    <testCase name="PensionerController.PensionerByID should return json body and response code 200" duration="3"/>
-    <testCase name="PensionerController.PensionerByID should do error handling" duration="2"/>
-  </file>
 </testExecutions>
